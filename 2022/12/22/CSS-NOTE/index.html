@@ -1,0 +1,337 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>CSS NOTE | 🍋阿檸賺大錢走上人生巔峰🍋</title><meta name="author" content="Lynn"><meta name="copyright" content="Lynn"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="CSS首先要知道 :選取器中 ，[ ]代表屬性、#代表id以甚麼作為起始: ^&#x3D;以甚麼作為結束: $&#x3D;   *代表頁面上所有標籤找出來全部套用&#x2F;萬用    在 html 當中的任何標籤，都可以給定 class 和 id 這兩個屬性。 class：表⽰樣式表的名稱。該名稱可以套用至多個元素上。 id：表⽰該元素的唯⼀名稱。在⼀個網頁當中，同樣的 id 名稱，不能重覆。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS NOTE">
+<meta property="og:url" content="https://example.com/2022/12/22/CSS-NOTE/index.html">
+<meta property="og:site_name" content="🍋阿檸賺大錢走上人生巔峰🍋">
+<meta property="og:description" content="CSS首先要知道 :選取器中 ，[ ]代表屬性、#代表id以甚麼作為起始: ^&#x3D;以甚麼作為結束: $&#x3D;   *代表頁面上所有標籤找出來全部套用&#x2F;萬用    在 html 當中的任何標籤，都可以給定 class 和 id 這兩個屬性。 class：表⽰樣式表的名稱。該名稱可以套用至多個元素上。 id：表⽰該元素的唯⼀名稱。在⼀個網頁當中，同樣的 id 名稱，不能重覆。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2022-12-22T07:31:44.000Z">
+<meta property="article:modified_time" content="2022-12-22T08:53:23.273Z">
+<meta property="article:author" content="Lynn">
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="/img/greenlemon.jpg"><link rel="canonical" href="https://example.com/2022/12/22/CSS-NOTE/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'CSS NOTE',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-22 16:53:23'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/lemon2.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">🍋阿檸賺大錢走上人生巔峰🍋</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">CSS NOTE</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2022-12-22T07:31:44.000Z" title="發表於 2022-12-22 15:31:44">2022-12-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2022-12-22T08:53:23.273Z" title="更新於 2022-12-22 16:53:23">2022-12-22</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="CSS NOTE"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><p>首先要知道 :<br><br>選取器中 ，[ ]代表屬性、#代表id<br><br>以甚麼作為起始: ^&#x3D;<br><br>以甚麼作為結束: $&#x3D;<br></p>
+<blockquote>
+<p> *代表頁面上所有標籤找出來全部套用&#x2F;萬用 </p>
+</blockquote>
+<ul>
+<li>在 html 當中的任何標籤，都可以給定 class 和 id 這兩個屬性。</li>
+<li>class：表⽰樣式表的名稱。該名稱可以套用至多個元素上。</li>
+<li>id：表⽰該元素的唯⼀名稱。在⼀個網頁當中，同樣的 id 名稱，不能重覆。</li>
+<li>在 CSS 中，「.」是代表 class 的意思；「#」是代表 id 的意思。</li>
+</ul>
+<p>, 和</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>, <span class="selector-tag">p</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: Aquamarine;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>空格 : 內層全部</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> <span class="selector-tag">p</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>‘&gt;’ : 第一層子元素 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> &gt; <span class="selector-tag">p</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: Brown;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p>‘+’ : 同一層的下一個 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span> +<span class="selector-tag">p</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>:green;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>~ : 同一層後面全部</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>~<span class="selector-tag">p</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: Brown;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2>CSS 優先權</h2>
+
+<blockquote>
+<p>後寫的會優先於前面寫的，但寫在標籤上的一定最優先CSS 當中，有加 !important 的屬性值優先權最高</p>
+</blockquote>
+<h2>偽元素</h2>
+
+<blockquote>
+<p>是⼀個不存在於頁面上的元素。透過 CSS 內建的偽元素，以兩個冒號做開頭，主要是用來調整頁面上元素特定部份樣式。</p>
+</blockquote>
+<blockquote>
+<p>只要有開始標籤,結束標籤,都有2個視覺上看不到的偽元素</p>
+</blockquote>
+<ul>
+<li>::before</li>
+<li>::after</li>
+</ul>
+<p>常用的 : <br></p>
+<ul>
+<li>::first-line：元素的第一行。</li>
+<li>::first-letter：元素的第⼀個字。</li>
+<li>::selection：滑鼠選取起來的範圍。</li>
+<li>::before：元素裡⾯的最前⾯(想成是⼀個 span 標籤)。</li>
+<li>::after：元素裡⾯的最後⾯(想成是⼀個 span 標籤)。</li>
+</ul>
+<p>只要加上content:””;就可以加上文字</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span><span class="selector-class">.para2</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="string">&quot;123&quot;</span>;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2>偽類別 pseudo-class</h2>
+
+<ul>
+<li>:root : 根元素，也就是html標籤本身</li>
+<li>:hover : 滑鼠移過會套用的CSS</li>
+<li>:first-child、 :last-child : 相對於父元素，第一、最後一個子元素</li>
+<li>:nth-child(n) : 相對於父元素 第n個子元素()內為公式</li>
+<li>:focus : 輸入焦點在欄位便套用CSS</li>
+<li>:checked : 當 radio button 或 checkbox 在勾選狀態時，就套用自訂 CSS</li>
+<li>:disabled：如果元素有 disabled 狀態的話，就會套用⾃訂 CSS。</li>
+</ul>
+<h2>display屬性</h2>
+
+<blockquote>
+<p>重要重要!</p>
+</blockquote>
+<p>display 的基礎四個屬性值：<br></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、block：區塊元素，例如：&lt;<span class="selector-tag">div</span>&gt;、&lt;<span class="selector-tag">p</span>&gt; 都是。</span><br><span class="line">會開始於新的⼀⾏，並且預設會&quot;佔滿⽗元素整個寬度&quot;。</span><br><span class="line">	&gt;<span class="selector-tag">div</span>預設就是block,寬度就是佔父元素的滿版(所以會佔到後面)</span><br><span class="line">   </span><br><span class="line"><span class="number">2</span>、inline-block：行內區塊元素。對行內區塊元素設定 <span class="attribute">width</span> 和 <span class="attribute">height</span> 會有效。</span><br><span class="line">	&gt;<span class="selector-tag">div</span>由原來的上下排變成橫向排列</span><br><span class="line">	*較有彈性,比較常用</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>、inline：例：&lt;<span class="selector-tag">span</span>&gt;、&lt;<span class="selector-tag">a</span>&gt;。對行內元素設定 <span class="attribute">width</span> 和 <span class="attribute">height</span> 都會失效。</span><br><span class="line">	&gt;<span class="selector-tag">span</span>,<span class="selector-tag">a</span>預設為inline</span><br><span class="line">	上下會有縫隙,是行高的關係</span><br><span class="line">	(行高<span class="attribute">line-height</span>預設為<span class="number">16px</span>*<span class="number">1.5</span> = <span class="number">24px</span>,可用<span class="number">1.5</span>表示)</span><br><span class="line"></span><br><span class="line"><span class="number">4</span>、<span class="attribute">none</span>：元素會於頁面中消失，不會佔住原來的空間位置，但仍然存在於頁面原始碼當中。</span><br><span class="line">	CF: visibility : visible ;</span><br><span class="line">    <span class="comment">/*visible(預設)  | hidden(消失但會佔位)*/</span></span><br><span class="line"></span><br><span class="line"><span class="number">5</span>、<span class="attribute">flex</span>:預設為nowrap</span><br><span class="line">   flex-wrap: wrap;</span><br><span class="line"><span class="comment">/* nowrap(預設) | wrap*/</span></span><br><span class="line"><span class="comment">/* display: inline-block; 有縫隙問題的替代方案 */</span></span><br></pre></td></tr></table></figure>
+<p>結論 : <br><br>元素上下排 : block<br><br>    橫向   : inline-block</p>
+<h2> 定位 position</h2>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">position</span>:static;</span><br><span class="line"><span class="comment">/* static(預設) | relative | absolute | fixed(固定在螢幕且不佔位) | sticky */</span></span><br><span class="line">搭配使用 <span class="attribute">top</span> <span class="attribute">bottom</span> <span class="attribute">right</span> <span class="attribute">left</span> 來設定位置</span><br><span class="line"></span><br><span class="line">ex. </span><br><span class="line"><span class="attribute">top</span>: <span class="number">0px</span>;</span><br><span class="line"><span class="attribute">left</span>: <span class="number">0px</span>;(也可用%)</span><br><span class="line"></span><br><span class="line">CF: transform: <span class="built_in">translateX</span>(-<span class="number">50%</span>);</span><br><span class="line">  	(移動元素本身的一半)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>relative :想對當前元素本來的位置做位移,不影響周圍元素</p>
+</li>
+<li><p>absolute :相對於父元素(非static的)的位置去做位移(會一直往上找)</p>
+</li>
+<li><p>sticky : 當遇到top 0時會一起往下掉(黏住)</p>
+<blockquote>
+<p>top:0; (常用)<br><br>**只限於父元素內,頁面離開父元素後會跟著一起離開</p>
+</blockquote>
+</li>
+<li><p>z-index : 當2元素重疊時,可以設定誰要在上誰要在下,以數值大小比較</p>
+<blockquote>
+<p>通常會寫在上方</p>
+</blockquote>
+</li>
+</ul>
+<h2>float 浮動</h2>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">float</span>: none;</span><br><span class="line">&gt;可以做文繞圖</span><br><span class="line">&gt;當元素設定<span class="attribute">float</span>時,如果文字高度撐不到圖片元素高度,會很奇怪</span><br><span class="line">解決方式 </span><br><span class="line"><span class="number">1</span><span class="selector-class">.overflow</span>: hidden;(不建議)</span><br><span class="line"><span class="number">2</span>.使用psudoclass</span><br><span class="line">	<span class="selector-tag">div</span><span class="selector-class">.float_block</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">		<span class="attribute">content</span>: <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="attribute">border</span>: <span class="number">1px</span> solid blue;</span><br><span class="line">        <span class="attribute">display</span>: block;</span><br><span class="line">        <span class="attribute">clear</span>: both;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<h2>文字樣式</h2>
+
+<h3>大小</h3>
+
+<ol>
+<li>⼀般若沒有特別設定，網⾴上預設的文字大小是 16 px。</li>
+<li>文字大小的單位，常用的有分兩種：<br> 第⼀種是固定單位，即 px；<br> 第⼆種是相對單位，即 %、em、rem。</li>
+<li>% 與 em 單位，都是相對於父元素的文字大小。</li>
+<li>rem 單位，是相對於根元素的文字大小，所謂根元素，<br>指的就是最外層的 <html> 標籤(:root)本身。</li>
+</ol>
+<blockquote>
+<p> 根元素預設為16px,但若使用rem會不好計算,可以將根元素設定為10px來使用之後排版計算簡單</p>
+</blockquote>
+<h3>文字水平對齊</h3>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">text-align</span>: left;</span><br><span class="line"> <span class="comment">/* left(靠左對齊) | right(靠右對齊) | center(⽂字置中) | justify(⽂字的左右兩邊切齊) */</span></span><br></pre></td></tr></table></figure>
+
+<h3>文字行高</h3>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">line-height</span>: normal;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>normal：預設值，預設大約是 font-size 的 1.4 倍。</li>
+<li>數值：會是 font-size 文字大小的倍數。</li>
+<li>固定像素：例如 32px。</li>
+</ul>
+<h3>文字設定</h3>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">white-space</span>: normal;</span><br><span class="line"><span class="attribute">normal</span>：預設值，連續空格、斷⾏都會被壓縮成⼀個空格。</span><br><span class="line">pre：保留連續空格、斷⾏。</span><br><span class="line">nowrap：限制不能斷⾏。</span><br></pre></td></tr></table></figure>
+<h3>文字斷行(word-break)&連字符號(hyphens)</h3>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. <span class="attribute">word-break</span> 和 <span class="attribute">hyphens</span> 這兩個屬性通常是針對英⽂字。</span><br><span class="line"><span class="number">2</span>. <span class="attribute">word-break</span> 屬性常用的設定有：</span><br><span class="line"> <span class="attribute">normal</span>：預設值。</span><br><span class="line"> break-word：以單字為單位來斷⾏。</span><br><span class="line"> break-<span class="attribute">all</span>：以字母為單位來斷⾏。</span><br><span class="line"><span class="number">3</span>. <span class="attribute">hyphens</span> 屬性常用的設定有：</span><br><span class="line"> manual：預設值，意思是如有需要，開發人員自行寫</span><br><span class="line"> (例如⾃⼰寫 <span class="selector-tag">HTML</span> Entity： &amp;hyphen; )。</span><br><span class="line"> auto：由瀏覽器自行判斷是否要出現連字符號。</span><br></pre></td></tr></table></figure>
+
+<h3>縮排和距離</h3>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">text-indent</span>: <span class="number">40px</span>;</span><br><span class="line">    首行縮排 至少要有<span class="number">2</span>個字才能縮排</span><br><span class="line"><span class="attribute">letter-spacing</span>: <span class="number">5px</span>;</span><br><span class="line">    字和字之間的距離</span><br><span class="line"><span class="attribute">word-spacing</span>: <span class="number">5px</span>;</span><br><span class="line">    單字和單字之間的距離</span><br></pre></td></tr></table></figure>
+
+<h3>字體</h3>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">font-family</span>:<span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">襯線(線條上有粗有細):serif</span><br><span class="line">無襯線 sans-serif</span><br></pre></td></tr></table></figure>
+<p>也可載入google字體</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line"> <span class="keyword">@fon-face</span>&#123;</span><br><span class="line">  <span class="attribute">font-family</span>:<span class="string">&quot;myname(自行命名)&quot;</span></span><br><span class="line">  src: <span class="built_in">url</span>(<span class="string">&quot;./fonts/NotoSansTC-Light.otf)</span></span><br><span class="line"><span class="string"> &#125;</span></span><br><span class="line"><span class="string">/*要載入另一字體要再寫一次*/</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">@font-face&#123;</span></span><br><span class="line"><span class="string">  font-family:&quot;</span><span class="string">myname_bold&quot;</span></span><br><span class="line"><span class="string">  src: url(&quot;./fonts/NotoSansTC-Bold.otf</span>)</span><br><span class="line"> &#125;</span><br><span class="line"><span class="selector-tag">p</span><span class="selector-class">.para1</span>&#123;</span><br><span class="line"> <span class="attribute">font-family</span>=&quot;myname&quot; ,serif;</span><br><span class="line">&#125;</span><br><span class="line"><span class="attribute">font-display</span>: swap; </span><br><span class="line"><span class="comment">/*載入時不會不見*/</span></span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h2>背景</h2>
+
+<h3>背景圖無法撐元素高度</h3>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">&quot;連結/網址&quot;</span>) </span><br><span class="line">    有水平方向和垂直方向的轉移</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3>背景反覆出現</h3>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">&quot;連結/網址&quot;</span>)</span><br><span class="line">    background-repeat: repeat;</span><br><span class="line"><span class="comment">/* repeat(預設) | no-repeat | repeat-x | repeat-y | space | round(背景圖會有變形情況) */</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3>背景圖大小</h3>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background-size</span>: <span class="number">100%</span>;</span><br><span class="line"> <span class="comment">/* 元素寬度的100% */</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">50%</span>;</span><br><span class="line"> <span class="comment">/* 寬 高 */</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">background-size</span>: <span class="number">100px</span>;</span><br><span class="line"></span><br><span class="line"><span class="attribute">background-size</span>: contain;</span><br><span class="line"><span class="comment">/*背景寬 or高達成100%(目的是讓背景圖在元素內完整呈現) */</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">background-size</span>: cover;</span><br><span class="line"><span class="comment">/* 背景寬 or高達成100%(目的是讓背景圖在元素內佔滿元素) */</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3>背景圖位置</h3>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background-position</span>: left top;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*left | center  | right水平*/</span></span><br><span class="line"><span class="comment">/*top | center | bottom垂直*/</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">background-position</span>: <span class="number">50px</span> <span class="number">20px</span>;</span><br><span class="line">    <span class="comment">/*離左50 上20*/</span></span><br><span class="line"></span><br><span class="line">等同於</span><br><span class="line"><span class="attribute">background-position</span>: right <span class="number">50px</span> bottom <span class="number">20px</span>;</span><br></pre></td></tr></table></figure>
+
+<h3>背景圖固定模式</h3>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background-attachment</span>:scroll;</span><br><span class="line"><span class="comment">/* scroll(預設) | local | fixed(固定在頁面上可視區域)*/</span></span><br><span class="line">*放在<span class="selector-tag">body</span>標籤</span><br><span class="line"></span><br><span class="line"><span class="attribute">overflow</span>: scroll ;</span><br><span class="line">區塊內文字超出顯示垂直卷軸</span><br></pre></td></tr></table></figure>
+<h3>背景圖顯示區域</h3>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background-origin</span>: padding-box;</span><br><span class="line"><span class="comment">/* padding-box(預設)  </span></span><br><span class="line"><span class="comment">border-box(背景圖從邊框開始呈現) </span></span><br><span class="line"><span class="comment">content-box(背景圖從content開始呈現)  */</span></span><br></pre></td></tr></table></figure>
+
+<h3>背景圖裁切區域</h3>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background-clip</span>: border-box;</span><br><span class="line"><span class="comment">/* border-box(padding區域以外的背景圖會被遮掉) | padding-box | content-box */</span></span><br></pre></td></tr></table></figure>
+<h3>背景線性漸層</h3>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background-image</span>: <span class="built_in">linear-gradiant</span>( red , green);</span><br></pre></td></tr></table></figure>
+<h3>同個區域設定多個背景</h3>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">&quot;連結/網址&quot;</span>), <span class="built_in">url</span>(<span class="string">&quot;連結/網址&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="attribute">background-repeat</span>: no-repeat, repeat;</span><br><span class="line"></span><br><span class="line"><span class="attribute">background-size</span>: <span class="number">50%</span>, auto;</span><br></pre></td></tr></table></figure>
+<h2>其他</h2>
+
+<p>元素不透明度(圖片) opacity</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">opacity</span>: <span class="number">1</span>(預設)</span><br><span class="line"><span class="comment">/* 0完全透明 | 0.9 | .5*/</span></span><br></pre></td></tr></table></figure>
+
+<p>元素可見</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">visibility</span>: visible;</span><br><span class="line"><span class="comment">/* visible(預設) |hidden(隱藏但是佔位)*/</span></span><br><span class="line">cf:</span><br><span class="line">    display: none;</span><br><span class="line">    不會佔住位子</span><br></pre></td></tr></table></figure>
+<p> 輪廓</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">outline</span>: 位於邊框之外</span><br><span class="line">   可以往外推或是內移</span><br><span class="line">outline-offset: <span class="number">3px</span>;</span><br><span class="line">//預設<span class="number">0</span> </span><br><span class="line">-<span class="number">1</span> -<span class="number">2</span> <span class="number">3</span> <span class="number">5</span> px <span class="attribute">none</span>;</span><br><span class="line"><span class="number">4</span>個邊一起設定無法單獨設定</span><br></pre></td></tr></table></figure>
+<p>游標</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cursor</span>: auto;</span><br><span class="line"><span class="comment">/*auto(預設) | pointer*/</span></span><br><span class="line"></span><br><span class="line">自訂游標的寫法，加上 default !important，如下範例：</span><br><span class="line"><span class="attribute">cursor</span>: <span class="built_in">url</span>(<span class="string">&quot;圖片路徑&quot;</span>), default <span class="meta">!important</span>;</span><br></pre></td></tr></table></figure>
+<p>圓角 </p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">border-radius</span> :<span class="number">2px</span>;</span><br><span class="line"></span><br><span class="line">可寫<span class="number">2</span>個數值 左上右下+右上左下</span><br><span class="line">可寫<span class="number">3</span>個數值 左上 右上 右下+左下</span><br><span class="line">可寫<span class="number">4</span>個數值 左上 右上(順時針)....</span><br><span class="line">當⼀個元素是正⽅形時，設定圓角為 <span class="number">50%</span>，就會變圓形，可以再搭配</span><br><span class="line"><span class="attribute">overflow</span>: hidden; </span><br><span class="line">設定將圖片超出元素的話，就隱藏。</span><br></pre></td></tr></table></figure>
+<p>transition轉場</p>
+<blockquote>
+<p>有數值上的變化才可以做變化</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">transition-duration</span>: ;</span><br><span class="line">設定轉場期間(,區隔)</span><br><span class="line"><span class="attribute">transition-property</span>: all;</span><br><span class="line">設定哪個屬性作轉場</span><br><span class="line">(<span class="attribute">all</span> 自動抓出有數值變化的屬性)</span><br><span class="line"></span><br><span class="line"><span class="attribute">transition-timing-function</span> : ease;</span><br><span class="line">(速度上的變化)</span><br><span class="line"><span class="comment">/* ease預設 | linear等速 | ease-in慢&gt;快 | ease-out快&gt;慢 | ease-in-out */</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">transition-delay</span>: <span class="number">1s</span>;</span><br><span class="line">(停留一秒再觸發效果)(多個屬性以,區隔)</span><br><span class="line"></span><br><span class="line">簡寫</span><br><span class="line"><span class="attribute">transition</span> : all <span class="number">0s</span> ease <span class="number">0s</span>;</span><br><span class="line"><span class="comment">/*transition-property ,transition-duration ,transition-timing-function,transition-delay*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="attribute">animation</span>搭配<span class="keyword">@keyframes</span></span><br><span class="line"></span><br><span class="line">animation-name : @keyframes的命名</span><br><span class="line">animation-duration : (秒數)</span><br><span class="line"></span><br><span class="line">animation-iteration-count : 次數; </span><br><span class="line">(infunite無限多次重覆)</span><br><span class="line"></span><br><span class="line"><span class="attribute">animation-direction</span> : </span><br><span class="line"><span class="comment">/*normal(預設) | reverse(反向) | alternate(交錯執行,執行2次) | alternate-reverse*/</span></span><br><span class="line"></span><br><span class="line">animation-delay : 動畫延遲(秒)</span><br><span class="line"></span><br><span class="line">animation-fill-mode : 填滿</span><br><span class="line"><span class="comment">/* none(預設) | forwards(停留在100%的位置) | backwards(delay期間停留在0%) | both */</span></span><br><span class="line"></span><br><span class="line">animation-play-state : <span class="built_in">running</span>(預設) | <span class="built_in">paused</span>(暫停)</span><br><span class="line">(暫停鍵)搭配JS</span><br><span class="line"></span><br><span class="line">animation-timing-function : </span><br><span class="line"><span class="comment">/* ease預設 | linear等速 | ease-in慢&gt;快 | ease-out快&gt;慢 | ease-in-out */</span></span><br></pre></td></tr></table></figure>
+<h1 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h1><blockquote>
+<p>先了解區塊模型 Box Model</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">box-sizing</span>: border-box ;</span><br><span class="line"><span class="comment">/* content-box(預設) | border-box(常用,切版較好用) */</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">padding</span> : 上 右 下 左   <span class="comment">/* 設定方向 */</span></span><br><span class="line">	    : 上  左右  下</span><br><span class="line">	    : 上下  左右</span><br><span class="line"></span><br><span class="line">margin : 上下取其大</span><br><span class="line">		 左右相加</span><br><span class="line">*body標籤有預設margin : <span class="number">8</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vertical-align</span>: baseline; </span><br><span class="line">對齊字的下緣</span><br><span class="line"><span class="comment">/* baseline(預設) | top | bottom | middle */</span></span><br><span class="line">cf: </span><br><span class="line">    圖片的邊框會有縫隙,因為圖片和文字的vertical-align要對齊此時有<span class="number">2</span>處理方式:</span><br><span class="line">	<span class="number">1</span>. 對外面的div做font-size: <span class="number">0</span>;</span><br><span class="line">	<span class="number">2</span>. 對<span class="selector-tag">div</span>裡面的<span class="selector-tag">img</span>標籤做<span class="attribute">vertical-align</span>: bottom;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>另現今為了因應智慧型手機的出現出現了優化成響應式網站,利用RWD技術來達成,通常以螢幕寬度768px為基礎,大於為網頁版,小於為行動版，有的會使用767.98,避免會有些微差距。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://example.com">Lynn</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="https://example.com/2022/12/22/CSS-NOTE/">https://example.com/2022/12/22/CSS-NOTE/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://example.com" target="_blank">🍋阿檸賺大錢走上人生巔峰🍋</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/12/21/HTML-NOTE/"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">HTML NOTE</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/lemon2.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lynn</div><div class="author-info__description">嚕貓,賺大錢,躺大床</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LynnHung1206"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/LynnHung1206" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:lynn990908@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS"><span class="toc-number">1.</span> <span class="toc-text">CSS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.1.</span> <span class="toc-text">CSS 優先權</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.2.</span> <span class="toc-text">偽元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.3.</span> <span class="toc-text">偽類別 pseudo-class</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.4.</span> <span class="toc-text">display屬性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.5.</span> <span class="toc-text"> 定位 position</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.6.</span> <span class="toc-text">float 浮動</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.7.</span> <span class="toc-text">文字樣式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.7.1.</span> <span class="toc-text">大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.7.2.</span> <span class="toc-text">文字水平對齊</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.7.3.</span> <span class="toc-text">文字行高</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.7.4.</span> <span class="toc-text">文字設定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.7.5.</span> <span class="toc-text">文字斷行(word-break)&amp;連字符號(hyphens)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.7.6.</span> <span class="toc-text">縮排和距離</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.7.7.</span> <span class="toc-text">字體</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.8.</span> <span class="toc-text">背景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.8.1.</span> <span class="toc-text">背景圖無法撐元素高度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.8.2.</span> <span class="toc-text">背景反覆出現</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.8.3.</span> <span class="toc-text">背景圖大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.8.4.</span> <span class="toc-text">背景圖位置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.8.5.</span> <span class="toc-text">背景圖固定模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.8.6.</span> <span class="toc-text">背景圖顯示區域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.8.7.</span> <span class="toc-text">背景圖裁切區域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.8.8.</span> <span class="toc-text">背景線性漸層</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.8.9.</span> <span class="toc-text">同個區域設定多個背景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.9.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A3%9C%E5%85%85"><span class="toc-number">2.</span> <span class="toc-text">補充</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/22/CSS-NOTE/" title="CSS NOTE"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CSS NOTE"/></a><div class="content"><a class="title" href="/2022/12/22/CSS-NOTE/" title="CSS NOTE">CSS NOTE</a><time datetime="2022-12-22T07:31:44.000Z" title="發表於 2022-12-22 15:31:44">2022-12-22</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/21/HTML-NOTE/" title="HTML NOTE"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="HTML NOTE"/></a><div class="content"><a class="title" href="/2022/12/21/HTML-NOTE/" title="HTML NOTE">HTML NOTE</a><time datetime="2022-12-21T11:46:55.000Z" title="發表於 2022-12-21 19:46:55">2022-12-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/19/Redis%E7%AD%86%E8%A8%98/" title="Redis筆記"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Redis筆記"/></a><div class="content"><a class="title" href="/2022/12/19/Redis%E7%AD%86%E8%A8%98/" title="Redis筆記">Redis筆記</a><time datetime="2022-12-19T01:06:11.000Z" title="發表於 2022-12-19 09:06:11">2022-12-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/17/JDBC%E7%AD%86%E8%A8%98/" title="JDBC筆記"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="JDBC筆記"/></a><div class="content"><a class="title" href="/2022/12/17/JDBC%E7%AD%86%E8%A8%98/" title="JDBC筆記">JDBC筆記</a><time datetime="2022-12-17T09:52:36.000Z" title="發表於 2022-12-17 17:52:36">2022-12-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/14/Java%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-2/" title="Java學習筆記(二)"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java學習筆記(二)"/></a><div class="content"><a class="title" href="/2022/12/14/Java%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-2/" title="Java學習筆記(二)">Java學習筆記(二)</a><time datetime="2022-12-14T15:24:25.000Z" title="發表於 2022-12-14 23:24:25">2022-12-14</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Lynn</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到頂部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
