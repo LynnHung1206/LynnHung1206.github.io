@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Java學習筆記(二) | 🍋阿檸賺大錢走上人生巔峰🍋</title><meta name="author" content="Lynn"><meta name="copyright" content="Lynn"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="關於傳值與傳址 這在定義上有些爭議,但現在大部分認為是傳址,因為門牌號碼也是一份值。    所謂類別 Java是一種以類別為基礎(class-based)的程式語言,透過類別來定義屬性以及方法,並用該類別產生的物件實體(object instance)進行功能上的實現與架構設計。 我們也藉由類別來達成封裝、繼承與多型三種概念。   陣列 陣列是由一群相同資料型態的變數所組成的一種資料結構。必須在宣">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java學習筆記(二)">
+<meta property="og:url" content="https://example.com/2022/12/14/Java%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-2/index.html">
+<meta property="og:site_name" content="🍋阿檸賺大錢走上人生巔峰🍋">
+<meta property="og:description" content="關於傳值與傳址 這在定義上有些爭議,但現在大部分認為是傳址,因為門牌號碼也是一份值。    所謂類別 Java是一種以類別為基礎(class-based)的程式語言,透過類別來定義屬性以及方法,並用該類別產生的物件實體(object instance)進行功能上的實現與架構設計。 我們也藉由類別來達成封裝、繼承與多型三種概念。   陣列 陣列是由一群相同資料型態的變數所組成的一種資料結構。必須在宣">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://example.com/images/java.png">
+<meta property="article:published_time" content="2022-12-14T15:24:25.000Z">
+<meta property="article:modified_time" content="2023-02-16T13:57:00.000Z">
+<meta property="article:author" content="Lynn">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://example.com/images/java.png"><link rel="shortcut icon" href="/img/greenlemon.jpg"><link rel="canonical" href="https://example.com/2022/12/14/Java%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Java學習筆記(二)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-16 21:57:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="🍋阿檸賺大錢走上人生巔峰🍋" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/lemon2.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/../images/java.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">🍋阿檸賺大錢走上人生巔峰🍋</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Java學習筆記(二)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2022-12-14T15:24:25.000Z" title="發表於 2022-12-14 23:24:25">2022-12-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2023-02-16T13:57:00.000Z" title="更新於 2023-02-16 21:57:00">2023-02-16</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AD%86%E8%A8%98/">筆記</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Java學習筆記(二)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="關於傳值與傳址"><a href="#關於傳值與傳址" class="headerlink" title="關於傳值與傳址"></a>關於傳值與傳址</h1><div>
+這在定義上有些爭議,但現在大部分認為是傳址,因為<b>門牌號碼也是一份值</b>。
+</div>
+<br>
+
+<h1 id="所謂類別"><a href="#所謂類別" class="headerlink" title="所謂類別"></a>所謂類別</h1><div>
+Java是一種以類別為基礎(class-based)的程式語言,透過類別來定義屬性以及方法,並用該類別產生的物件實體(object instance)進行功能上的實現與架構設計。
+我們也藉由類別來達成封裝、繼承與多型三種概念。
+</div>
+
+<h1 id="陣列"><a href="#陣列" class="headerlink" title="陣列"></a>陣列</h1><div>
+陣列是由一群<b>相同資料型態</b>的變數所組成的一種資料結構。必須在宣告時就定義長度才能操作。記得索引值由0開始。
+</div>    
+<span>一維陣列宣告方式為:</span>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> x[] = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">3</span>];</span><br><span class="line"><span class="comment">//or</span></span><br><span class="line"><span class="type">int</span>[] x = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">3</span>];</span><br><span class="line"><span class="comment">// or</span></span><br><span class="line"><span class="type">int</span> x[] = &#123;<span class="number">10</span>,<span class="number">20</span>,<span class="number">30</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<div>另外,程式進入點main方法可以接受零至多個字串當作參數(String args[])傳入，String args[]其實就是一個字串陣列。
+</div>
+<br>
+<div>
+陣列必須用new關鍵字來分配陣列的儲存空間，所以：<br>
+<ul>
+<li>陣列也是一種Reference資料型態</li>
+<li> 陣列的指定運算，也是傳遞陣列的記憶體位址(memory address) </li>
+<li>陣列使用new關鍵字分配好儲存空間後，所有元素都會自動賦予初始值(和實體變數一樣)</li>
+</ul>
+</div>
+
+<h2>存取陣列</h2>
+<div>取得陣列的長度：
+<ul>
+ <li>語法：陣列名稱.length</li>
+ <li>一維陣列為<b>元素個數</b></li>
+ <li>二維陣列為<b>小陣列的數量</b></li>
+ <li>length後面不可以加上小括弧，因為此處的     length並不是方法，而是陣列的一個屬性
+(跟String類別的length()不同)</li>
+</ul>
+</div>
+<h2>多維陣列</h2>
+<div>
+<ul>
+<li>即為陣列的陣列(巢狀結構)</li>
+<li>也可如一維陣列一般,宣告時給予初值</li>
+<li>非矩形的陣列形式是OK的(每個小陣列的元素數量不同,在宣告時先不給值而是後續去指定)</li>
+</ul>
+</div>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> xx[][] = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">4</span>][];</span><br><span class="line">    xx[<span class="number">0</span>] = <span class="keyword">new</span> <span class="title class_">int</span> [<span class="number">3</span>];</span><br><span class="line">    xx[<span class="number">1</span>] = <span class="keyword">new</span> <span class="title class_">int</span> [<span class="number">4</span>];</span><br><span class="line">    xx[<span class="number">2</span>] = <span class="keyword">new</span> <span class="title class_">int</span> [<span class="number">5</span>];</span><br><span class="line">    xx[<span class="number">3</span>] = <span class="keyword">new</span> <span class="title class_">int</span> [<span class="number">5</span>];</span><br></pre></td></tr></table></figure>
+
+<p><span>常用的方法:</span></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] intArray = &#123;<span class="number">250</span>,<span class="number">100</span>,<span class="number">300</span>&#125;;</span><br><span class="line"><span class="comment">// 陣列的排序</span></span><br><span class="line">Array.sort(intArray);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 陣列的複製</span></span><br><span class="line"><span class="type">int</span>[] intArray2 = &#123;<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>&#125;;</span><br><span class="line"><span class="comment">//呼叫copyOf方法並傳入兩個參數：欲複製的陣列、欲複製的陣列長度 長度超過原來的長度其他為預設初始值,不需要new即可生成新的址的陣列</span></span><br><span class="line"><span class="type">int</span>[] intArray2B = Arrays.copyOf(intArray2, intArray2.length);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 陣列的搜尋</span></span><br><span class="line"><span class="type">int</span>[] intArray3 = &#123;<span class="number">100</span>, <span class="number">200</span>, <span class="number">300</span>, <span class="number">50</span>&#125;;</span><br><span class="line"><span class="comment">// 呼叫binarySearch方法並傳入兩個參數：欲搜尋的陣列、欲搜尋的值</span></span><br><span class="line"><span class="comment">// 注意：欲搜尋前必先將陣列進行排序</span></span><br><span class="line">Arrays.sort(intArray3);</span><br><span class="line"><span class="type">int</span> <span class="variable">i1</span> <span class="operator">=</span> Arrays.binarySearch(intArray3, <span class="number">50</span>);  <span class="comment">// 有要搜尋的值</span></span><br><span class="line"><span class="type">int</span> <span class="variable">i2</span> <span class="operator">=</span> Arrays.binarySearch(intArray3, <span class="number">150</span>); <span class="comment">// 沒有搜尋到值,回傳負值</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="字串池與其不可變性-immutable"><a href="#字串池與其不可變性-immutable" class="headerlink" title="字串池與其不可變性(immutable)"></a>字串池與其不可變性(immutable)</h1><div>
+<ul>
+<li>String一旦宣告後，即不能在原所在記憶體位置改變字串內容</li>
+<li>若是修改文字內容,JAVA會產生新的字串物件存著新的內容</li>
+<li>字串池(String Pool)對池子的資源達到重複利用的機制</li>
+</ul>
+但如果單獨new一個String物件則會有屬於自己的記憶體空間
+</div>
+
+<h2>比較相等</h2>
+<div>
+ == 在Java字串中，比較的是記憶體位址,比較字串內容時，應該使用String物件本身提供的一個方法<br>
+ public boolean equals(Object anObject)
+</div>
+<h2>String常用的方法</h2>
+<div>
+<ul>
+<li>public char charAt(int index)：透過索引值取得字串內某一個字元</li>
+<li>public int length()：傳回字串長度，也就是字元的數量 (注意空白也算進去)</li>
+<li>public boolean isEmpty()：如果字串長度為0，則回傳true，否則回傳false</li>
+<i>null(空值):<br>
+1.只能搭配參考變數使用,null不代表任何記憶體位置,所以沒有指向任何一個實體.<br>
+2.多作為參考變數的初始值使用.</i>
+<li>public String substring(int beginIndex)：擷取從開始索引值的字元至結尾字元的字串</li>
+<li>public String substring(int beginIndex, int endIndex)：
+擷取從開始索引值的字元至結束索引值的字元之間的字串 (注意結束索引值的字元不取)</li>
+<li>public int compareTo(String anotherString)：比較的方式是由左至右，依照字元ASCII值比較大小</li>
+<i>若回傳值=0，表示兩個字串相等<br>
+若回傳值 > 0，表示左邊字串大於右邊字串<br>
+若回傳值 < 0，表示左邊字串小於右邊字串 </i>
+</ul>
+</div>
+
+<h1 id="不固定參數機制-varargs-jdk-1-5-java5"><a href="#不固定參數機制-varargs-jdk-1-5-java5" class="headerlink" title="不固定參數機制(varargs)~jdk 1.5 java5"></a>不固定參數機制(varargs)~jdk 1.5 java5</h1><div>varargs(不固定參數個數 / 可變參數個數)：<br>
+1. 方法內可使用 … 點號，宣告<b>可變數目的參數</b><br>
+2. 可變參數必須放在參數列的最後面<br>
+3. 方法中最多只能有1個不固定參數的宣告，不能有2個或2個以上的不固定參數</div>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AddInt</span> &#123;</span><br><span class="line">                                      <span class="comment">//不固定參數被當作陣列</span></span><br><span class="line">	<span class="keyword">public</span> <span class="type">int</span> <span class="title function_">varArgTest</span><span class="params">(<span class="type">int</span>... c)</span> &#123; <span class="comment">//... 宣告可變數目的參數</span></span><br><span class="line">		<span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; c.length; i++) &#123;</span><br><span class="line">			sum += c[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> sum;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		<span class="type">AddInt</span> <span class="variable">add</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">AddInt</span>();</span><br><span class="line">		<span class="type">int</span> <span class="variable">sum1</span> <span class="operator">=</span> add.varArgTest(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">		<span class="type">int</span> <span class="variable">sum2</span> <span class="operator">=</span> add.varArgTest(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">		System.out.println(<span class="string">&quot;sum1=&quot;</span> + sum1); <span class="comment">// 3</span></span><br><span class="line">		System.out.println(<span class="string">&quot;sum2=&quot;</span> + sum2); <span class="comment">// 10</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://example.com">Lynn</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="https://example.com/2022/12/14/Java%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-2/">https://example.com/2022/12/14/Java%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://example.com" target="_blank">🍋阿檸賺大錢走上人生巔峰🍋</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a></div><div class="post_share"><div class="social-share" data-image="/../images/java.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/12/17/JDBC%E7%AD%86%E8%A8%98/"><img class="prev-cover" src="/../images/jdbc.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JDBC筆記</div></div></a></div><div class="next-post pull-right"><a href="/2022/12/08/%E4%B8%80%E5%80%8B%E5%A4%9A%E6%9C%88%E4%BE%86%E7%9A%84%E5%AD%B8%E7%BF%92%E5%BF%83%E5%BE%97/"><img class="next-cover" src="/./images/cake.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">一個多月來的學習心得</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相關推薦</span></div><div class="relatedPosts-list"><div><a href="/2022/12/17/JDBC%E7%AD%86%E8%A8%98/" title="JDBC筆記"><img class="cover" src="/../images/jdbc.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-17</div><div class="title">JDBC筆記</div></div></a></div><div><a href="/2022/12/03/Java%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-1/" title="Java學習筆記(一)"><img class="cover" src="/../images/java.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-03</div><div class="title">Java學習筆記(一)</div></div></a></div><div><a href="/2023/02/14/Spring-MVC/" title="Spring MVC"><img class="cover" src="/./images/spring-mvc.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-14</div><div class="title">Spring MVC</div></div></a></div><div><a href="/2023/02/20/Spring-boot/" title="Spring boot"><img class="cover" src="/../images/springboot.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-20</div><div class="title">Spring boot</div></div></a></div><div><a href="/2023/02/10/Spring/" title="Spring"><img class="cover" src="/./images/spring.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-10</div><div class="title">Spring</div></div></a></div><div><a href="/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/" title="基礎面試題"><img class="cover" src="/./images/interv.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-15</div><div class="title">基礎面試題</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/lemon2.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lynn</div><div class="author-info__description">嚕貓,賺大錢,躺大床</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LynnHung1206"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/LynnHung1206" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:lynn990908@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%97%9C%E6%96%BC%E5%82%B3%E5%80%BC%E8%88%87%E5%82%B3%E5%9D%80"><span class="toc-number">1.</span> <span class="toc-text">關於傳值與傳址</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%80%E8%AC%82%E9%A1%9E%E5%88%A5"><span class="toc-number">2.</span> <span class="toc-text">所謂類別</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%99%A3%E5%88%97"><span class="toc-number">3.</span> <span class="toc-text">陣列</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">3.1.</span> <span class="toc-text">存取陣列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">3.2.</span> <span class="toc-text">多維陣列</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E4%B8%B2%E6%B1%A0%E8%88%87%E5%85%B6%E4%B8%8D%E5%8F%AF%E8%AE%8A%E6%80%A7-immutable"><span class="toc-number">4.</span> <span class="toc-text">字串池與其不可變性(immutable)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">4.1.</span> <span class="toc-text">比較相等</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">4.2.</span> <span class="toc-text">String常用的方法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8D%E5%9B%BA%E5%AE%9A%E5%8F%83%E6%95%B8%E6%A9%9F%E5%88%B6-varargs-jdk-1-5-java5"><span class="toc-number">5.</span> <span class="toc-text">不固定參數機制(varargs)~jdk 1.5 java5</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/01/hello-world/" title="Hello World"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2023/03/01/hello-world/" title="Hello World">Hello World</a><time datetime="2023-03-01T02:22:11.585Z" title="發表於 2023-03-01 10:22:11">2023-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/25/goToWorkLa/" title="終於到這一天"><img src="/./images/C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="終於到這一天"/></a><div class="content"><a class="title" href="/2023/02/25/goToWorkLa/" title="終於到這一天">終於到這一天</a><time datetime="2023-02-25T02:13:52.000Z" title="發表於 2023-02-25 10:13:52">2023-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/21/mybatisInSpring/" title="MyBatis 加入 Spring Boot"><img src="/../images/springmybatis.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MyBatis 加入 Spring Boot"/></a><div class="content"><a class="title" href="/2023/02/21/mybatisInSpring/" title="MyBatis 加入 Spring Boot">MyBatis 加入 Spring Boot</a><time datetime="2023-02-21T11:45:01.000Z" title="發表於 2023-02-21 19:45:01">2023-02-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/20/Spring-boot/" title="Spring boot"><img src="/../images/springboot.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring boot"/></a><div class="content"><a class="title" href="/2023/02/20/Spring-boot/" title="Spring boot">Spring boot</a><time datetime="2023-02-20T12:56:37.000Z" title="發表於 2023-02-20 20:56:37">2023-02-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/" title="基礎面試題"><img src="/./images/interv.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基礎面試題"/></a><div class="content"><a class="title" href="/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/" title="基礎面試題">基礎面試題</a><time datetime="2023-02-15T10:37:17.000Z" title="發表於 2023-02-15 18:37:17">2023-02-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Lynn</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到頂部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Spring boot | 🍋阿檸賺大錢走上人生巔峰🍋</title><meta name="author" content="Lynn"><meta name="copyright" content="Lynn"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="什麼是 Spring Boot ? 大致包含三大要素   starter 整合程式庫 :不用一一找版本加入(利用 Maven 功能整合依賴項目)，提供很多 starter，開發者可依需求選用。 自動組態(Auto Configuration) :EX.使用啟動器 spring-boot-starter-web，預設會註冊 DispatcherServlet、託管 View 解析器(Internal">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring boot">
+<meta property="og:url" content="https://example.com/2023/02/20/Spring-boot/index.html">
+<meta property="og:site_name" content="🍋阿檸賺大錢走上人生巔峰🍋">
+<meta property="og:description" content="什麼是 Spring Boot ? 大致包含三大要素   starter 整合程式庫 :不用一一找版本加入(利用 Maven 功能整合依賴項目)，提供很多 starter，開發者可依需求選用。 自動組態(Auto Configuration) :EX.使用啟動器 spring-boot-starter-web，預設會註冊 DispatcherServlet、託管 View 解析器(Internal">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://example.com/images/springboot.jpeg">
+<meta property="article:published_time" content="2023-02-20T12:56:37.000Z">
+<meta property="article:modified_time" content="2023-02-20T20:40:14.000Z">
+<meta property="article:author" content="Lynn">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="框架">
+<meta property="article:tag" content="SpringBoot">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://example.com/images/springboot.jpeg"><link rel="shortcut icon" href="/img/greenlemon.jpg"><link rel="canonical" href="https://example.com/2023/02/20/Spring-boot/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Spring boot',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-21 04:40:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="🍋阿檸賺大錢走上人生巔峰🍋" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/lemon2.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/../images/springboot.jpeg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">🍋阿檸賺大錢走上人生巔峰🍋</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Spring boot</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2023-02-20T12:56:37.000Z" title="發表於 2023-02-20 20:56:37">2023-02-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2023-02-20T20:40:14.000Z" title="更新於 2023-02-21 04:40:14">2023-02-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E8%A1%93/">技術</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Spring boot"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="什麼是-Spring-Boot"><a href="#什麼是-Spring-Boot" class="headerlink" title="什麼是 Spring Boot ?"></a>什麼是 Spring Boot ?</h1><blockquote>
+<p>大致包含三大要素</p>
+</blockquote>
+<ul>
+<li>starter 整合程式庫 :<br>不用一一找版本加入(利用 Maven 功能整合依賴項目)，提供很多 starter，開發者可依需求選用。</li>
+<li>自動組態(Auto Configuration) :<br>EX.使用啟動器 spring-boot-starter-web，預設會註冊 DispatcherServlet、託管 View 解析器(InternalResourceViewResolver)</li>
+<li>內嵌執行環境(embedded Web Server) :<br>不需要額外的 web server<br>EX.使用啟動器 spring-boot-starter-web，預設會自帶 Tomcat</li>
+</ul>
+<p>另外提供 CLI(Command Line Interface )及執行器(Actuator)。</p>
+<pre><code>**注 :
+CLI 是 Command Line Interface 的縮寫，中文為命令列面，是一種文字化的使用者介面。通常是透過終端（Terminal）或命令提示字元（Command Prompt）等軟體，鍵盤輸入指令，並以文字的方式呈現結果。CLI 可以用來控制腦、操作檔案、執行程式等，並且通常是自由軟體的一部分。
+相對於圖形使用者介面（GUI），CLI 的優勢在於其快速、靈和可編程的特性。使用者可以透過鍵盤輸入指令，不需要透過鼠點選圖形介面上的按鈕，這可以提高操作速度和效率。同時CLI 也提供了豐富的指令選   項和參數，可以透過組合指令參數實現更加複雜的操作。
+常見的 CLI 包括 Unix/Linux 系統中的 shell，以及Windows 系統中的命令提示字元（Command Prompt）和Windows PowerShell 等。除了系統自帶的 CLI，還有許多第方的 CLI 工具和腳本語言，例如 Git、Docker、Python 等這些工具可以透過命令行實現自動化操作和快速部署。
+</code></pre>
+<blockquote>
+<p>約定優於組態(Convention over Configuration)</p>
+</blockquote>
+<p>資料庫 table 名為 Member，基於 ORM 對應類別名應該也要為 Member<br>如果跟約定的不一樣，需要額外做映射。<br>另外，此將開發者們常用的組態設定視為約定，如不合用就另外自行設定。</p>
+<blockquote>
+<p>Spring Boot 的精神為，讓開發者做最少的前置作業，即可開始開發。</p>
+</blockquote>
+<h1 id="starter-機制"><a href="#starter-機制" class="headerlink" title="starter 機制"></a>starter 機制</h1><blockquote>
+<p>Spring Boot 利用 Maven 的依賴&#x2F;繼承，定義幾個模塊</p>
+</blockquote>
+<ul>
+<li>spring-boot-dependencies<br>使用 Maven 的<dependencyManagement>標籤，封裝所有 Spring 系列框架，⼀般不會直接使用，僅當作 spring-boot-starter-parent 的父模塊</li>
+<li>spring-boot-starter-parent<br>設定所有 Spring Boot Starter 專案所需的 Maven 專案相關設定<br>⼀般不會直接使用，僅當作自建的 Spring Boot Starter 專案之⽗模塊</li>
+<li>spring-boot-starter-*<br>封裝針對某功能相關的 Spring 系列框架的程式庫，會直接使用，當作自建的 Spring Boot Starter 專案之依賴<br>EX. spring-boot-starter-web，封裝了以下程式庫<ul>
+<li>spring-web</li>
+<li>spring-webmvc</li>
+<li>spring-boot-starter-json</li>
+<li>spring-boot-starter-tomcat</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>自建的 Spring Boot Starter 專案。。。</p>
+</blockquote>
+<ul>
+<li>靠間接繼承 spring-boot-dependencies，處理程式庫間版本支援</li>
+<li>靠繼承 spring-boot-starter-parent，獲得 Maven 專案相關設定</li>
+<li>靠使用 spring-boot-starter-*，加入 Spring 系列框架程式庫</li>
+</ul>
+<p>starter 可分成 3 個大類 :</p>
+<ul>
+<li>application : 應用程式類</li>
+<li>production : 正式環境類</li>
+<li>technical : 系統層級類</li>
+</ul>
+<p>常見啟動器詳見講義。</p>
+<h1 id="封裝成-jar-與-war-的差別"><a href="#封裝成-jar-與-war-的差別" class="headerlink" title="封裝成 jar 與 war 的差別"></a>封裝成 jar 與 war 的差別</h1><p>Spring Boot 用非 web 專案就可以執行，如果想要放到另外一台 application Server 上執行，或是要使用 JSP，才需要包成 war，如想要直接下指令 run 可以包成 jar 即可。</p>
+<h1 id="Spring-Boot-Starter-專案"><a href="#Spring-Boot-Starter-專案" class="headerlink" title="Spring Boot Starter 專案"></a>Spring Boot Starter 專案</h1><blockquote>
+<p>針對專案結構做說明</p>
+</blockquote>
+<p>預設會建立 專案名 Application.java，是 Spring Boot Starter 專案得主類別，裡面有 main 方法，為執行的進入點。<br>其特徵為@SpringBootApplication，以及呼叫 SpringApplication.run()。</p>
+<p>@SpringBootApplication 包含 3 個 Annotation :</p>
+<ul>
+<li>@SpringBootConfiguration : 設定為 Spring Boot 核心組態類別，等同於非 Spring Boot 中的@Configuration</li>
+<li>@EnableAutoConfiguration : 啟用自動組態</li>
+<li>@ComponentScan : 指定掃描 Bean 元件，預設掃描套件為新建 Spring Boot Starter 專案時，設定的根套件名(Package)</li>
+</ul>
+<p>SpringApplication.run() 為 Spring Boot 環境的程式進入點</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LynnProjectApplication</span> &#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		SpringApplication.run(LynnProjectApplication.class, args);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果新建時打包成 war，會生成 ServletInitializer.java，為部署描述類別，是 web.xml 的取代品</p>
+<blockquote>
+<p>資源目錄</p>
+</blockquote>
+<p>這裡比較特別要注意的是，靜態資源的位置有較大的變化。在 src&#x2F;main&#x2F;resources 下，有 static 和 templates 目錄。</p>
+<ul>
+<li>static : 為 Web 靜態資源目錄，通常放.js .css .img 之類的檔案，jsp 放置此處毫無作用</li>
+<li>templates : 為 Thymeleaf 專用資源目錄(Spring Boot 推薦在 Spring MVC 的 View 層使用 Thymeleaf)</li>
+<li>application.properties : Spring Boot 核心組態檔</li>
+</ul>
+<blockquote>
+<p>測試程式目錄 src&#x2F;test&#x2F;java</p>
+</blockquote>
+<p>預設會建立，測試程式放此</p>
+<blockquote>
+<p>Web 根目錄(webapp)</p>
+</blockquote>
+<p>打包方式選 war 才會建立，即 Java web 的 webapp 目錄，若需要在 Spring Boot 中使用 JSP，須放至此目錄(需 WEB-INF ⽬錄，則須手動建⽴)</p>
+<h1 id="靜態資源管理機制"><a href="#靜態資源管理機制" class="headerlink" title="靜態資源管理機制"></a>靜態資源管理機制</h1><p>當客戶端對本網站某 URI 請求靜態資源，Spring Boot 會依順序尋找</p>
+<ul>
+<li>classpath:&#x2F;META-INF&#x2F;resources&#x2F; (須手動建立)</li>
+<li>classpath:&#x2F;resources&#x2F;</li>
+<li>classpath:&#x2F;static&#x2F;</li>
+<li>classpath:&#x2F;public&#x2F; (須手動建立)</li>
+</ul>
+<p>找到 → 回應；找不到 → 下⼀個目錄</p>
+<p>Spring Boot 預設首頁檔名是 index.xml，會依照順序在靜態資源目錄尋找。<br>若想要自訂則需要使用 Spring MVC 組態設定。</p>
+<h1 id="Auto-Configuration"><a href="#Auto-Configuration" class="headerlink" title="Auto Configuration"></a>Auto Configuration</h1><ul>
+<li>所有的組態設定預設都在 spring-boot-autoconfigure-x.y.z.jar</li>
+<li>開發者透過 starter 決定使用哪些預設</li>
+</ul>
+<p>舉例常用的 2 個 :<br>spring-boot-starter-data-jpa</p>
+<ul>
+<li>託管 DataSource(連線自行決定)</li>
+<li>託管 TransactionManager(啟用交易控制)</li>
+<li>底層為 Hibernate</li>
+</ul>
+<p>spring-boot-starter-web</p>
+<ul>
+<li>託管 ViewResolver</li>
+<li>設定靜態資源管理</li>
+<li>託管 MessageConverter</li>
+<li>設定預設⾸⾴</li>
+</ul>
+<h2>核心組態檔</h2>
+
+<blockquote>
+<p>只有當預設值不合用，或是無預設值時才會再次設定</p>
+</blockquote>
+<p>支援 2 種格式，分別為常數檔 properties(default)以及 yml。<br>路徑為 src&#x2F;main&#x2F;resources(預設)，檔名為 application.properties&#x2F;application.yml<br>組態內容 : 屬性名均為小寫，且使用 Spring Tools 4 會有提示字。<br>若 2 者皆存在，以 properties 優先。</p>
+<h2>YAML</h2>
+
+<ul>
+<li>YAML Ain’t Markup Language(YAML 不是⼀種標記語⾔)</li>
+<li>⼀種易讀易寫的資料格式，其格式中的空⽩、縮排、換行，有特殊意義</li>
+<li>副檔名可為 yaml yml</li>
+</ul>
+<p>語法為 key : value，如換行再縮排，表示此屬性在前⼀個未縮排的屬性之命名空間下。<br>值的語法 :</p>
+<ul>
+<li>字面常數(Literal)</li>
+<li>物件(Key Value pair)</li>
+<li>陣列</li>
+</ul>
+<figure class="highlight java"><figcaption><span>Properties</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># properties</span><br><span class="line">spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver</span><br><span class="line">spring.datasource.url=jdbc:mysql:<span class="comment">//localhost:3306/JAVA_FRAMEWORK</span></span><br><span class="line">spring.datasource.username=root</span><br><span class="line">spring.datasource.password=password</span><br><span class="line">server.port=<span class="number">8080</span></span><br><span class="line">server.servlet.context-path=/springboot-exercise</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>yml 冒號後面要空白</p>
+</blockquote>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yml</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">    <span class="attr">datasource:</span></span><br><span class="line">        <span class="attr">driver-class-name:</span> <span class="string">com.mysql.cj.jdbc.Driver</span></span><br><span class="line">        <span class="attr">url:</span> <span class="string">jdbc:mysql://localhost:3306/JAVA_FRAMEWORK</span></span><br><span class="line">        <span class="attr">username:</span> <span class="string">root</span></span><br><span class="line">        <span class="attr">password:</span> <span class="string">password</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">8080</span></span><br><span class="line">    <span class="attr">servlet:</span></span><br><span class="line">        <span class="attr">context-path:</span> <span class="string">/springboot-exercise</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>常用組態詳見講義</p>
+</blockquote>
+<h1 id="內嵌-application-web-server"><a href="#內嵌-application-web-server" class="headerlink" title="內嵌 application web server"></a>內嵌 application web server</h1><p>共支援 3 種內嵌伺服器<br>Tomcat、Jetty、Underrtow</p>
+<p>Spring Boot 的內嵌式 Web 伺服器是預設啟動的，所以如果要丟到外部 Web 伺服器，需要在 pom.xml 設定排除 Tomcat 啟動器，不然會發生端口(port)衝突。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">exclusion</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">exclusion</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">exclusions</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://example.com">Lynn</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="https://example.com/2023/02/20/Spring-boot/">https://example.com/2023/02/20/Spring-boot/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://example.com" target="_blank">🍋阿檸賺大錢走上人生巔峰🍋</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/%E6%A1%86%E6%9E%B6/">框架</a><a class="post-meta__tags" href="/tags/SpringBoot/">SpringBoot</a></div><div class="post_share"><div class="social-share" data-image="/../images/springboot.jpeg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/02/21/mybatisInSpring/"><img class="prev-cover" src="/../images/springmybatis.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">MyBatis 加入 Spring Boot</div></div></a></div><div class="next-post pull-right"><a href="/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/"><img class="next-cover" src="/./images/interv.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">基礎面試題</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相關推薦</span></div><div class="relatedPosts-list"><div><a href="/2023/02/14/Spring-MVC/" title="Spring MVC"><img class="cover" src="/./images/spring-mvc.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-14</div><div class="title">Spring MVC</div></div></a></div><div><a href="/2023/02/10/Spring/" title="Spring"><img class="cover" src="/./images/spring.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-10</div><div class="title">Spring</div></div></a></div><div><a href="/2022/12/17/JDBC%E7%AD%86%E8%A8%98/" title="JDBC筆記"><img class="cover" src="/../images/jdbc.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-17</div><div class="title">JDBC筆記</div></div></a></div><div><a href="/2022/12/03/Java%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-1/" title="Java學習筆記(一)"><img class="cover" src="/../images/java.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-03</div><div class="title">Java學習筆記(一)</div></div></a></div><div><a href="/2022/12/14/Java%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-2/" title="Java學習筆記(二)"><img class="cover" src="/../images/java.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">Java學習筆記(二)</div></div></a></div><div><a href="/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/" title="基礎面試題"><img class="cover" src="/./images/interv.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-15</div><div class="title">基礎面試題</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/lemon2.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lynn</div><div class="author-info__description">嚕貓,賺大錢,躺大床</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LynnHung1206"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/LynnHung1206" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:lynn990908@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-Spring-Boot"><span class="toc-number">1.</span> <span class="toc-text">什麼是 Spring Boot ?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#starter-%E6%A9%9F%E5%88%B6"><span class="toc-number">2.</span> <span class="toc-text">starter 機制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%81%E8%A3%9D%E6%88%90-jar-%E8%88%87-war-%E7%9A%84%E5%B7%AE%E5%88%A5"><span class="toc-number">3.</span> <span class="toc-text">封裝成 jar 與 war 的差別</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-Boot-Starter-%E5%B0%88%E6%A1%88"><span class="toc-number">4.</span> <span class="toc-text">Spring Boot Starter 專案</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%9D%9C%E6%85%8B%E8%B3%87%E6%BA%90%E7%AE%A1%E7%90%86%E6%A9%9F%E5%88%B6"><span class="toc-number">5.</span> <span class="toc-text">靜態資源管理機制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Auto-Configuration"><span class="toc-number">6.</span> <span class="toc-text">Auto Configuration</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">6.1.</span> <span class="toc-text">核心組態檔</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">6.2.</span> <span class="toc-text">YAML</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%A7%E5%B5%8C-application-web-server"><span class="toc-number">7.</span> <span class="toc-text">內嵌 application web server</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/03/01/hello-world/" title="Hello World"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/2023/03/01/hello-world/" title="Hello World">Hello World</a><time datetime="2023-03-01T02:22:11.585Z" title="發表於 2023-03-01 10:22:11">2023-03-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/25/goToWorkLa/" title="終於到這一天"><img src="/./images/C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="終於到這一天"/></a><div class="content"><a class="title" href="/2023/02/25/goToWorkLa/" title="終於到這一天">終於到這一天</a><time datetime="2023-02-25T02:13:52.000Z" title="發表於 2023-02-25 10:13:52">2023-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/21/mybatisInSpring/" title="MyBatis 加入 Spring Boot"><img src="/../images/springmybatis.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MyBatis 加入 Spring Boot"/></a><div class="content"><a class="title" href="/2023/02/21/mybatisInSpring/" title="MyBatis 加入 Spring Boot">MyBatis 加入 Spring Boot</a><time datetime="2023-02-21T11:45:01.000Z" title="發表於 2023-02-21 19:45:01">2023-02-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/20/Spring-boot/" title="Spring boot"><img src="/../images/springboot.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring boot"/></a><div class="content"><a class="title" href="/2023/02/20/Spring-boot/" title="Spring boot">Spring boot</a><time datetime="2023-02-20T12:56:37.000Z" title="發表於 2023-02-20 20:56:37">2023-02-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/" title="基礎面試題"><img src="/./images/interv.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基礎面試題"/></a><div class="content"><a class="title" href="/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/" title="基礎面試題">基礎面試題</a><time datetime="2023-02-15T10:37:17.000Z" title="發表於 2023-02-15 18:37:17">2023-02-15</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Lynn</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到頂部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
