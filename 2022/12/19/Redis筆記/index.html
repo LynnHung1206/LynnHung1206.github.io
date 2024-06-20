@@ -1,0 +1,347 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Redis筆記 | 🍋阿檸賺大錢走上人生巔峰🍋</title><meta name="author" content="Lynn"><meta name="copyright" content="Lynn"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Redis(REmote DIctionary Server)Redius 為非關聯式的鍵值資料庫(Map)支援的資料型別:  字串型態(String)包含字串(JSON,BASE64,二進位資料),整數,浮點數 雜湊(Hash)型態巢狀 key-value,無順序性 列表(List)型態 集合(Set)型態 有序集合(Sorted Set)型態Zset   指令和 key 型別要對,不然會噴 E">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis筆記">
+<meta property="og:url" content="https://example.com/2022/12/19/Redis%E7%AD%86%E8%A8%98/index.html">
+<meta property="og:site_name" content="🍋阿檸賺大錢走上人生巔峰🍋">
+<meta property="og:description" content="Redis(REmote DIctionary Server)Redius 為非關聯式的鍵值資料庫(Map)支援的資料型別:  字串型態(String)包含字串(JSON,BASE64,二進位資料),整數,浮點數 雜湊(Hash)型態巢狀 key-value,無順序性 列表(List)型態 集合(Set)型態 有序集合(Sorted Set)型態Zset   指令和 key 型別要對,不然會噴 E">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://example.com/images/redis.jpg">
+<meta property="article:published_time" content="2022-12-19T01:06:11.000Z">
+<meta property="article:modified_time" content="2023-02-17T05:57:11.437Z">
+<meta property="article:author" content="Lynn">
+<meta property="article:tag" content="DB">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://example.com/images/redis.jpg"><link rel="shortcut icon" href="/img/greenlemon.jpg"><link rel="canonical" href="https://example.com/2022/12/19/Redis%E7%AD%86%E8%A8%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Redis筆記',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-17 13:57:11'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/lemon2.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/../images/redis.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">🍋阿檸賺大錢走上人生巔峰🍋</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Redis筆記</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2022-12-19T01:06:11.000Z" title="發表於 2022-12-19 09:06:11">2022-12-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2023-02-17T05:57:11.437Z" title="更新於 2023-02-17 13:57:11">2023-02-17</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E8%A1%93/">技術</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Redis筆記"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Redis-REmote-DIctionary-Server"><a href="#Redis-REmote-DIctionary-Server" class="headerlink" title="Redis(REmote DIctionary Server)"></a>Redis(REmote DIctionary Server)</h1><p>Redius 為非關聯式的鍵值資料庫(Map)<br><br><br>支援的資料型別:</p>
+<ul>
+<li>字串型態(String)<br>包含字串(JSON,BASE64,二進位資料),整數,浮點數</li>
+<li>雜湊(Hash)型態<br>巢狀 key-value,無順序性</li>
+<li>列表(List)型態</li>
+<li>集合(Set)型態</li>
+<li>有序集合(Sorted Set)型態<br>Zset</li>
+</ul>
+<blockquote>
+<p>指令和 key 型別要對,不然會噴 Exception</p>
+</blockquote>
+<h2>功能特性</h2>
+
+<ul>
+<li><p>Redis 將所有資料都儲存在<b>記憶體</b>裡<br><i>讀寫速度比硬碟快上許多</i></p>
+</li>
+<li><p>Redis 提供了持久化的支援<br><i>記憶體的資料以非同步的方式輸出到硬碟裡</i></p>
+</li>
+<li><p>可以幫每個 key 設定存活時間 (Time To Live, TTL),常用於快取和佇列</p>
+</li>
+<li><p>提供了十幾種不同程式語言的 API</p>
+</li>
+</ul>
+<h2>安裝</h2>
+<br>
+Redis官方並不對Windows進行安裝支援的開發,但微軟的Open Technologies Inc.還是發佈了一個可以在Windows上執行Redis的分支，目前最新版只到3.2版，請參考：<br>
+https://github.com/MicrosoftArchive/redis/releases
+<br>
+
+<blockquote>
+<p>根據次版本編號(也就是第一個小數點數字)為偶數的版本是穩定版(Stable)，奇數版本為非穩定版</p>
+</blockquote>
+<p>變成手動後要下指令開,關閉視窗即關閉</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">redis -server C:\redis.windows.conf</span><br></pre></td></tr></table></figure>
+
+<p>也可以寫腳本,先開一文字文件,再輸入指令後把檔名改成批次檔(.bat)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">redis-server C:\Redis\redis.windows.conf --appendonly <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">redis-cli shutdown</span><br></pre></td></tr></table></figure>
+
+<p>開啟執行批次檔後可以使用 CMD 來下指令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">redis-cli</span><br><span class="line"></span><br><span class="line">IP:6379&gt; ping</span><br><span class="line">PONG</span><br><span class="line">IP:6379&gt; <span class="built_in">set</span> Hello REdis</span><br><span class="line">OK</span><br><span class="line">IP:6379&gt; get Hello</span><br><span class="line"><span class="string">&quot;REdis&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>使用 set , get 方式設定 key,value<br><br><br>輸入資料後可以搭配使用 redis 的圖形化介面來看存取的資料<br><a target="_blank" rel="noopener" href="https://github.com/qishibo/AnotherRedisDesktopManager">https://github.com/qishibo/AnotherRedisDesktopManager</a></p>
+<blockquote>
+<p>預設為 16 個儲存空間如需要切換的話需下指令,不切換預設為 db0</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 切換到第15個儲存空間</span></span><br><span class="line">jedis.select(<span class="number">15</span>);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>與 MySQL 不同,不開放,所以無帳號密碼設定上的需要(扮演暫存,快取角色)</p>
+</blockquote>
+<h1 id="操作資料"><a href="#操作資料" class="headerlink" title="操作資料"></a>操作資料</h1><ul>
+<li>Redis 會根據新增資料使用的指令,自動推斷型別</li>
+<li>預設初始值為 null,key 為唯一,如同名會覆蓋</li>
+</ul>
+<p>字串操作指令 :</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">GET key :</span><br><span class="line"></span><br><span class="line">SET key newValue :</span><br><span class="line"></span><br><span class="line">DEL key :</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在 Java 中操作指令 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Jedis</span> <span class="variable">jedis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Jedis</span>(<span class="string">&quot;localhost&quot;</span>, <span class="number">6379</span>);</span><br><span class="line">jedis.set(<span class="string">&quot;key&quot;</span>,<span class="string">&quot;value&quot;</span>);</span><br><span class="line">jedis.get(<span class="string">&quot;key&quot;</span>);<span class="comment">//value</span></span><br><span class="line"></span><br><span class="line">jedis.append(<span class="string">&quot;key&quot;</span>,<span class="string">&quot;value2&quot;</span>); <span class="comment">//value被替換成value2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 回傳value的&#x27;byte&#x27;長度</span></span><br><span class="line">jedis.strlen(<span class="string">&quot;key&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 回傳提供索引值(單位為byte)的value,有包含start~end</span></span><br><span class="line">jedis.getrange(<span class="string">&quot;key&quot;</span>,<span class="number">2</span>,<span class="number">5</span>);<span class="comment">//lue2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 也可用負數表示,從右至左(-1為最後一個byte,-2為倒數第二個)</span></span><br><span class="line">jedis.getrange(<span class="string">&quot;key&quot;</span>,-<span class="number">3</span>,-<span class="number">1</span>);<span class="comment">//ue2</span></span><br></pre></td></tr></table></figure>
+
+<h2>多筆資料處理</h2>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">jedis.mset(<span class="string">&quot;key1&quot;</span>, <span class="string">&quot;value1&quot;</span>, <span class="string">&quot;key2&quot;</span>, <span class="string">&quot;value2&quot;</span>, <span class="string">&quot;key3&quot;</span>, <span class="string">&quot;value3&quot;</span>);</span><br><span class="line">List&lt;String&gt; data = jedis.mget(<span class="string">&quot;key1&quot;</span>, <span class="string">&quot;key2&quot;</span>, <span class="string">&quot;key3&quot;</span>);</span><br><span class="line"><span class="keyword">for</span> (String str : data)</span><br></pre></td></tr></table></figure>
+
+<h2>處理整數資料</h2>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= <span class="number">100</span>; i++) &#123;</span><br><span class="line">			jedis.incr(<span class="string">&quot;num&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">//incr(); 會直接做加總,在圖形化介面可以看到value為100</span></span><br><span class="line">jedis.decr(<span class="string">&quot;num&quot;</span>);</span><br><span class="line"><span class="comment">// 會減一</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>你的 value 必須為數字格式才能使用以上方法</p>
+</blockquote>
+<h2>處理位元資料</h2>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 位元</span></span><br><span class="line"><span class="comment">//       b           a            r</span></span><br><span class="line"><span class="comment">//   01100010     01100001     01110010</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//                 OR運算</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//       a           a            r</span></span><br><span class="line"><span class="comment">//   01100001     01100001     01110010</span></span><br><span class="line"><span class="comment">//   ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//       c           a            r</span></span><br><span class="line"><span class="comment">//   01100011     01100001     01110010</span></span><br><span class="line">jedis.set(<span class="string">&quot;foo&quot;</span>, <span class="string">&quot;bar&quot;</span>);</span><br><span class="line">System.out.println(jedis.getbit(<span class="string">&quot;foo&quot;</span>, <span class="number">6</span>));<span class="comment">//回傳為true</span></span><br><span class="line"></span><br><span class="line">jedis.setbit(<span class="string">&quot;foo&quot;</span>, <span class="number">6</span>, <span class="literal">false</span>);</span><br><span class="line">jedis.setbit(<span class="string">&quot;foo&quot;</span>, <span class="number">7</span>, <span class="literal">true</span>);</span><br><span class="line">System.out.println(jedis.get(<span class="string">&quot;foo&quot;</span>));<span class="comment">//bar -&gt; aar</span></span><br><span class="line"></span><br><span class="line">jedis.set(<span class="string">&quot;foo1&quot;</span>, <span class="string">&quot;bar&quot;</span>);</span><br><span class="line">jedis.set(<span class="string">&quot;foo2&quot;</span>, <span class="string">&quot;aar&quot;</span>);</span><br><span class="line">jedis.bitop(BitOP.OR, <span class="string">&quot;result&quot;</span>, <span class="string">&quot;foo1&quot;</span>, <span class="string">&quot;foo2&quot;</span>);</span><br><span class="line">System.out.println(jedis.get(<span class="string">&quot;result&quot;</span>));<span class="comment">//car</span></span><br></pre></td></tr></table></figure>
+
+<h2>List資料</h2>
+
+<ul>
+<li>List 如同 LinkedList，或是可視為佇列或堆疊進行操作，因為可以進行 List 的左右兩端的加入與移除，或是取得某一部份內容，但搭配索引值存取的效能表現就較不理想</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 從左邊放入</span></span><br><span class="line">jedis.lpush(<span class="string">&quot;customers&quot;</span>, <span class="string">&quot;David&quot;</span>, <span class="string">&quot;James&quot;</span>, <span class="string">&quot;Vincent&quot;</span>, <span class="string">&quot;Ben&quot;</span>, <span class="string">&quot;Ron&quot;</span>, <span class="string">&quot;George&quot;</span>, <span class="string">&quot;Howard&quot;</span>);</span><br><span class="line"><span class="comment">// List內容：&quot;Howard&quot;, &quot;George&quot;, &quot;Ron&quot;, &quot;Ben&quot;, &quot;Vincent&quot;, &quot;James&quot;, &quot;David&quot;</span></span><br><span class="line"></span><br><span class="line">jedis.lpop(<span class="string">&quot;customers&quot;</span>);<span class="comment">//Howard,拿到最左邊的value且移除</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 從右邊放入</span></span><br><span class="line">jedis.rpush(<span class="string">&quot;customers&quot;</span>, <span class="string">&quot;Jerry&quot;</span>, <span class="string">&quot;Joe&quot;</span>, <span class="string">&quot;Smith&quot;</span>);</span><br><span class="line"><span class="comment">// List內容：&quot;George&quot;, &quot;Ron&quot;, &quot;Ben&quot;, &quot;Vincent&quot;, &quot;James&quot;, &quot;David&quot;, &quot;Jerry&quot;, &quot;Joe&quot;, &quot;Smith&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 拿出但不移除</span></span><br><span class="line">List&lt;String&gt; range1 = jedis.lrange(<span class="string">&quot;customers&quot;</span>, <span class="number">3</span>, <span class="number">6</span>);</span><br><span class="line"><span class="keyword">for</span> (String customer : range1)</span><br><span class="line">	System.out.println(customer);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 回傳元素個數,key不存在就回傳0</span></span><br><span class="line">jedis.llen(<span class="string">&quot;customers&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//去頭去尾,等於你要保留的索引值</span></span><br><span class="line">jedis.ltrim(<span class="string">&quot;customers&quot;</span>, <span class="number">3</span>, <span class="number">6</span>);</span><br><span class="line">List&lt;String&gt; range2 = jedis.lrange(<span class="string">&quot;customers&quot;</span>, <span class="number">0</span>, jedis.llen(<span class="string">&quot;customers&quot;</span>) - <span class="number">1</span>);</span><br><span class="line"><span class="comment">//List&lt;String&gt; range2 = jedis.lrange(&quot;customers&quot;, 0, - 1); 最右邊為-1</span></span><br><span class="line"><span class="keyword">for</span> (String customer : range2)</span><br><span class="line">    System.out.println(customer);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 插入元素</span></span><br><span class="line">jedis.linsert(<span class="string">&quot;customers&quot;</span>, LIST_POSITION.BEFORE, <span class="string">&quot;David&quot;</span>, <span class="string">&quot;Jedis&quot;</span>);<span class="comment">//插入在David前面</span></span><br><span class="line"><span class="comment">//也可LIST_POSITION.AFTER</span></span><br><span class="line">List&lt;String&gt; range3 = jedis.lrange(<span class="string">&quot;customers&quot;</span>, <span class="number">0</span>, jedis.llen(<span class="string">&quot;customers&quot;</span>) - <span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span> (String customer : range3)</span><br><span class="line">	System.out.println(customer);</span><br></pre></td></tr></table></figure>
+
+<h2>Hash資料</h2>
+
+<ul>
+<li>目的是讓 Redis 可以如同關聯式資料庫(表格-欄位)的存取對應關係</li>
+<li>Hash 型態也是一種 key-value 結構，儲存欄位與對應的值，但值只能是字串資料，不支援其它型態，因此不能做巢狀結構 (Redis 所有資料型態都不支援巢狀資料結構)</li>
+<li>Hash 型態很適合用來儲存物件，利用物件所屬類別與 ID 做為 key，而實體變數名稱做為欄位，而欄位值存著實體變數的值</li>
+<li>可在購物車使用</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jedis.hset(<span class="string">&quot;pen:1&quot;</span>, <span class="string">&quot;brand&quot;</span>, <span class="string">&quot;SKB&quot;</span>);</span><br><span class="line">jedis.hset(<span class="string">&quot;pen:1&quot;</span>, <span class="string">&quot;price&quot;</span>, <span class="string">&quot;10&quot;</span>);</span><br><span class="line">jedis.hget(<span class="string">&quot;pen:1&quot;</span>, <span class="string">&quot;brand&quot;</span>);<span class="comment">//SKB</span></span><br><span class="line">jedis.hget(<span class="string">&quot;pen:1&quot;</span>, <span class="string">&quot;price&quot;</span>);<span class="comment">//10</span></span><br></pre></td></tr></table></figure>
+
+<h2>Set</h2>
+
+<ul>
+<li>重複資料無法放入,資料為唯一</li>
+<li>key 之間還能進行聯集、交集與差集等運算 (如文章分類標籤)</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">jedis.sadd(<span class="string">&quot;post:1:tags&quot;</span>, <span class="string">&quot;Java&quot;</span>);</span><br><span class="line">jedis.sadd(<span class="string">&quot;post:2:tags&quot;</span>, <span class="string">&quot;Java&quot;</span>, <span class="string">&quot;Servlet&quot;</span>);</span><br><span class="line">jedis.sadd(<span class="string">&quot;post:3:tags&quot;</span>, <span class="string">&quot;Java&quot;</span>, <span class="string">&quot;Servlet&quot;</span>, <span class="string">&quot;JSP&quot;</span>);</span><br><span class="line">jedis.sadd(<span class="string">&quot;tag:Java:posts&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;1&quot;</span>, <span class="string">&quot;3&quot;</span>);</span><br><span class="line">jedis.sadd(<span class="string">&quot;tag:Servlet:posts&quot;</span>, <span class="string">&quot;3&quot;</span>, <span class="string">&quot;2&quot;</span>);</span><br><span class="line">jedis.sadd(<span class="string">&quot;tag:JSP:posts&quot;</span>, <span class="string">&quot;3&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (String str : jedis.smembers(<span class="string">&quot;post:3:tags&quot;</span>)) &#123;</span><br><span class="line">	System.out.println(str);</span><br><span class="line">	&#125;</span><br><span class="line">jedis.sismember(<span class="string">&quot;post:2:tags&quot;</span>, <span class="string">&quot;JSP&quot;</span>);<span class="comment">//false</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 差集運算</span></span><br><span class="line">jedis.sdiff(<span class="string">&quot;A集合&quot;</span>,<span class="string">&quot;B集合&quot;</span>); <span class="comment">//A-B剩下的東西,A比B多了什麼</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 交集運算</span></span><br><span class="line">jedis.sinter(<span class="string">&quot;A集合&quot;</span>,<span class="string">&quot;B集合&quot;</span>);<span class="comment">//屬於A也屬於B的元素</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 聯集運算</span></span><br><span class="line">jedis.sunion(<span class="string">&quot;A集合&quot;</span>,<span class="string">&quot;B集合&quot;</span>);<span class="comment">//A+B,重複的不放</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 放入資料</span></span><br><span class="line">jedis.sadd(<span class="string">&quot;candidate&quot;</span>, <span class="string">&quot;David&quot;</span>, <span class="string">&quot;James&quot;</span>, <span class="string">&quot;Vincent&quot;</span>, <span class="string">&quot;Peter&quot;</span>, <span class="string">&quot;Ron&quot;</span>, <span class="string">&quot;George&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//隨機拿取不重複</span></span><br><span class="line">System.out.println(jedis.srandmember(<span class="string">&quot;candidate&quot;</span>));</span><br><span class="line"></span><br><span class="line"><span class="comment">// 回傳List&lt;String&gt;,拿3個,如為負數就可以重複</span></span><br><span class="line">System.out.println(jedis.srandmember(<span class="string">&quot;candidate&quot;</span>, <span class="number">3</span>));</span><br><span class="line"><span class="comment">// System.out.println(jedis.srandmember(&quot;candidate&quot;, -3));</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2>Zset</h2>
+
+<ul>
+<li><p>Zset(Sorted Set)與 Set 不同之處就在於是有序性的。每個元素都會連結一個分數，讓我們可以輕鬆完成最高(或最低)的前 N 個元素</p>
+</li>
+<li><p>Zset 與 List 也有些相似，兩者皆為有序性，也都能取得某一個範圍的元素，但使用的情境卻是不同的：</p>
+</li>
+</ul>
+<ol>
+<li>List 是 Linked 結構，所以對兩端資料存取效率極高，但對中間元素處理較慢，適合用在新的資料或最舊的資料(兩端)存取</li>
+<li>Zset 非 Linked 結構，即使是取中間元素資料速度也很快</li>
+<li>List 要調整某個元素位置效能表現不佳，但 Zset 表現極佳(透過調整元素連結的分數即可)</li>
+<li>Zset 比起 List 更耗費記憶體的使用</li>
+</ol>
+<ul>
+<li>分數資料可以使用整數之外也可以使用浮點數</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, Double&gt; scores1 = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">scores1.put(<span class="string">&quot;David&quot;</span>, <span class="keyword">new</span> <span class="title class_">Double</span>(<span class="number">100</span>));</span><br><span class="line">scores1.put(<span class="string">&quot;James&quot;</span>, <span class="keyword">new</span> <span class="title class_">Double</span>(<span class="number">85</span>));</span><br><span class="line">scores1.put(<span class="string">&quot;Ron&quot;</span>, <span class="keyword">new</span> <span class="title class_">Double</span>(<span class="number">67</span>));</span><br><span class="line">scores1.put(<span class="string">&quot;Vincent&quot;</span>, <span class="keyword">new</span> <span class="title class_">Double</span>(<span class="number">72</span>));</span><br><span class="line">scores1.put(<span class="string">&quot;George&quot;</span>, <span class="keyword">new</span> <span class="title class_">Double</span>(<span class="number">87</span>));</span><br><span class="line">scores1.put(<span class="string">&quot;Howard&quot;</span>, <span class="keyword">new</span> <span class="title class_">Double</span>(<span class="number">75</span>));</span><br><span class="line">scores1.put(<span class="string">&quot;Peter&quot;</span>, <span class="keyword">new</span> <span class="title class_">Double</span>(<span class="number">80</span>));</span><br><span class="line"></span><br><span class="line">Map&lt;String, Double&gt; scores2 = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">scores2.put(<span class="string">&quot;David&quot;</span>, <span class="keyword">new</span> <span class="title class_">Double</span>(<span class="number">90</span>));</span><br><span class="line">scores2.put(<span class="string">&quot;James&quot;</span>, <span class="keyword">new</span> <span class="title class_">Double</span>(<span class="number">77</span>));</span><br><span class="line">scores2.put(<span class="string">&quot;Ron&quot;</span>, <span class="keyword">new</span> <span class="title class_">Double</span>(<span class="number">78</span>));</span><br><span class="line">scores2.put(<span class="string">&quot;Vincent&quot;</span>, <span class="keyword">new</span> <span class="title class_">Double</span>(<span class="number">68</span>));</span><br><span class="line">scores2.put(<span class="string">&quot;George&quot;</span>, <span class="keyword">new</span> <span class="title class_">Double</span>(<span class="number">95</span>));</span><br><span class="line">scores2.put(<span class="string">&quot;Howard&quot;</span>, <span class="keyword">new</span> <span class="title class_">Double</span>(<span class="number">81</span>));</span><br><span class="line">scores2.put(<span class="string">&quot;Peter&quot;</span>, <span class="keyword">new</span> <span class="title class_">Double</span>(<span class="number">72</span>));</span><br><span class="line"></span><br><span class="line">jedis.zadd(<span class="string">&quot;scores1&quot;</span>, scores1);</span><br><span class="line">jedis.zadd(<span class="string">&quot;scores2&quot;</span>, scores2);</span><br><span class="line"></span><br><span class="line">jedis.zadd(<span class="string">&quot;scores1&quot;</span>, <span class="number">92</span>, <span class="string">&quot;Vincent&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 叫出資料</span></span><br><span class="line">jedis.zscore(<span class="string">&quot;scores1&quot;</span>, <span class="string">&quot;Vincent&quot;</span>); <span class="comment">//92</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 預設為由小到大(分數)</span></span><br><span class="line">jedis.zrange(<span class="string">&quot;scores1&quot;</span>, <span class="number">1</span>, -<span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// &#x27;(&#x27;代表不包含，也可以用+inf或-inf來代表正無窮或負無窮</span></span><br><span class="line">	jedis.zrangeByScore(<span class="string">&quot;scores1&quot;</span>, <span class="string">&quot;80&quot;</span>, <span class="string">&quot;(100&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 小於等於100分的前3人</span></span><br><span class="line">jedis.zrevrangeByScore(<span class="string">&quot;scores1&quot;</span>, <span class="string">&quot;100&quot;</span>, <span class="string">&quot;0&quot;</span>, <span class="number">0</span>, <span class="number">3</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加8分</span></span><br><span class="line">jedis.zincrby(<span class="string">&quot;scores1&quot;</span>, <span class="number">8</span>, <span class="string">&quot;Peter&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 他的位置(索引值)-小到大</span></span><br><span class="line">jedis.zrank(<span class="string">&quot;scores1&quot;</span>, <span class="string">&quot;David&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 大到小</span></span><br><span class="line">jedis.zrevrank(<span class="string">&quot;scores1&quot;</span>, <span class="string">&quot;David&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 加總(預設)後排序</span></span><br><span class="line"><span class="type">ZParams</span> <span class="variable">zp</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ZParams</span>();</span><br><span class="line"><span class="comment">// Aggregate.SUM(預設) | Aggregate.MAX | Aggregate.MIN</span></span><br><span class="line">jedis.zinterstore(<span class="string">&quot;scoresinter&quot;</span>, zp.aggregate(Aggregate.SUM), <span class="string">&quot;scores1&quot;</span>, <span class="string">&quot;scores2&quot;</span>);</span><br><span class="line">System.out.println(jedis.zrevrange(<span class="string">&quot;scoresinter&quot;</span>, <span class="number">0</span>, -<span class="number">1</span>));</span><br></pre></td></tr></table></figure>
+
+<h1 id="JSON-資料格式"><a href="#JSON-資料格式" class="headerlink" title="JSON 資料格式"></a>JSON 資料格式</h1><ul>
+<li>JSON(JavaScript Object Notation)為一種輕量級的資料交換語言，以文字為基礎而讓人容易閱讀理解，在 WEB 的資料傳輸上，佔有相當重要的地位</li>
+</ul>
+<p><b>可以讓不同的程式語言可以互相進行資料傳輸的交換使用,也實現了以文字形式對物件進行序列化</b></p>
+<ul>
+<li>XML 也是類似的概念，但因為 XML 是一種完整標記語言，因此在程式撰寫判讀上比起 JSON 過於笨重與較多心力，故現今瀏覽器解析、手機資料交換都採用較輕量的 JSON 以取得最佳效能</li>
+</ul>
+<p>JSON 是一種以鍵值(key-value)的方式存取資料：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// JSON Object</span></span><br><span class="line"><span class="punctuation">&#123;</span>“myKey”<span class="punctuation">:</span>myValue<span class="punctuation">&#125;</span></span><br><span class="line"><span class="comment">// JSON Array</span></span><br><span class="line"><span class="punctuation">[</span><span class="punctuation">&#123;</span>“myKey”<span class="punctuation">:</span>myValue<span class="punctuation">&#125;</span><span class="punctuation">,</span><span class="punctuation">&#123;</span>“myKey2”<span class="punctuation">:</span>myValue2<span class="punctuation">&#125;</span><span class="punctuation">]</span></span><br></pre></td></tr></table></figure>
+
+<p>Java SE 沒有包含 JSON API,要 import jar 檔</p>
+<h1 id="Base64-資料格式"><a href="#Base64-資料格式" class="headerlink" title="Base64 資料格式"></a>Base64 資料格式</h1><ul>
+<li><p>Base64 是一種編碼格式，可以將二進制位元資料編成可顯示字元，用來進行儲存或是傳輸資料使用，例如圖片轉成 Base64 字串後，可以用在 HTML 標籤上顯示</p>
+</li>
+<li><p>在 HTTP 協定下，由於是傳輸文字內容，所以其中一種方式就是將二進制位元資料轉成 Base64 格式來進行編碼與反編碼的動作，如電子郵件圖片</p>
+</li>
+</ul>
+<p>Java 8 在 java.util 套件新增了 Base64 類別，即可使用標準 API 進行操作：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 編碼</span></span><br><span class="line"><span class="type">String</span> <span class="variable">encode</span> <span class="operator">=</span> Base64.getEncoder().encodeToString(<span class="string">&quot;Hello World!&quot;</span>.getBytes(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">System.out.println(encode);</span><br><span class="line"><span class="comment">// 解碼</span></span><br><span class="line"><span class="type">byte</span>[] decode = Base64.getDecoder().decode(encode);</span><br><span class="line">System.out.println(<span class="keyword">new</span> <span class="title class_">String</span>(decode, <span class="string">&quot;UTF-8&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+<p>不鼓勵存取大量資料時使用,因為效能差</p>
+<blockquote>
+<p>3 bytes to 4 characters,資料變長,傳輸時間長</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestBase64</span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">		<span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;FC_Bayern.png&quot;</span>);</span><br><span class="line">		<span class="type">FileInputStream</span> <span class="variable">fis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(file);</span><br><span class="line">		<span class="type">byte</span>[] pic = <span class="keyword">new</span> <span class="title class_">byte</span>[fis.available()];</span><br><span class="line">		fis.read(pic);</span><br><span class="line">		fis.close();</span><br><span class="line"></span><br><span class="line">		<span class="comment">// encode</span></span><br><span class="line">		<span class="type">String</span> <span class="variable">base64str</span> <span class="operator">=</span> Base64.getEncoder().encodeToString(pic);</span><br><span class="line">		System.out.println(base64str);</span><br><span class="line"></span><br><span class="line">		<span class="comment">// decode</span></span><br><span class="line">		<span class="type">byte</span>[] fromBase64str = Base64.getDecoder().decode(base64str);</span><br><span class="line">		<span class="type">FileOutputStream</span> <span class="variable">fos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;fromBase64str.png&quot;</span>);</span><br><span class="line">		fos.write(fromBase64str);</span><br><span class="line">		fos.flush();</span><br><span class="line">		fos.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Redis-交易機制"><a href="#Redis-交易機制" class="headerlink" title="Redis 交易機制"></a>Redis 交易機制</h1><ul>
+<li>交易裡的所有指令都是循序執行，而交易執行期間，Redis 就不會再接受其它用戶端的請求提供任何服務，以確保原子性(A)執行</li>
+<li>與關聯式資料庫不同，若是其中有指令執行失敗，Redis 會繼續執行後續的指令 <b>(沒有 rollback 機制)</b></li>
+<li>交易開啟之前，若通訊發生故障，則所有交易指令都不會執行;但若是已經執行 EXEC 指令之後發生通訊故障，則指令都會被 Redis 執行</li>
+</ul>
+<h1 id="Redis-資料存活機制-TTL-Time-To-Live"><a href="#Redis-資料存活機制-TTL-Time-To-Live" class="headerlink" title="Redis 資料存活機制 TTL(Time To Live)"></a>Redis 資料存活機制 TTL(Time To Live)</h1><ul>
+<li>在開發功能時，可能會遇到一些有時效性的資料處理，例如限時優惠、快取機制，或是驗證信件點擊處理等，過了一定時間就要做資料刪除的動作，而 Redis 就提供了這樣的功能，可以對 key 設定存活時間，只要指定的時間到期，由 Redis 自動刪除</li>
+</ul>
+<p>指令 :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">jedis.set(<span class="string">&quot;test&quot;</span>, <span class="string">&quot;Hello&quot;</span>);</span><br><span class="line"><span class="comment">//設定過期時間(單位為秒)</span></span><br><span class="line">jedis.expire(<span class="string">&quot;test&quot;</span>, <span class="number">10</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">//取得剩餘秒數</span></span><br><span class="line">jedis.ttl(<span class="string">&quot;test&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取得剩餘毫秒數</span></span><br><span class="line">jedis.pttl(<span class="string">&quot;test&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取消expire</span></span><br><span class="line">jedis.persist(<span class="string">&quot;test&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// second指的是系統時間(1970-01-01 00:00:00)起始秒數</span></span><br><span class="line"><span class="comment">// 精準控制用</span></span><br><span class="line">jedis.expireat(<span class="string">&quot;test&quot;</span>, <span class="number">10</span>);</span><br><span class="line">jedis.pexpireat(<span class="string">&quot;test&quot;</span>, <span class="number">10</span>);<span class="comment">//同上,只是單位為毫秒</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Redis-持久化機制"><a href="#Redis-持久化機制" class="headerlink" title="Redis 持久化機制"></a>Redis 持久化機制</h1><ul>
+<li><p>Redis 提供了兩種持久化機制：<br>RDB(預設)與 AOF。讓我們可以對在記憶體裡面的資料透過兩種不同機制(或是混搭)，可以進行硬碟保存的永續操作</p>
+<ol>
+<li>DB 是透過快照機制完成，當符合設定檔裡的條件，即把所有在記憶體裡的資料進行快照並儲存在硬碟裡</li>
+<li>AOF 是滿足條件即把資料透過 append 的方式，附加在硬碟檔案裡面</li>
+</ol>
+</li>
+</ul>
+<h2>RDB</h2>
+官方的設定檔redis.conf裡就預置了三個RDB啟動快照的條件：
+
+<ol>
+<li>save 900 1 (單位:秒&#x2F;資料量)</li>
+<li>save 300 10</li>
+<li>save 60 10000</li>
+</ol>
+<p>RDB 優點 :</p>
+<ul>
+<li>使用 RDB 對整個 Redis 資料庫來說就是一個檔案，因此在進行資料恢復時，可以做到較輕鬆的處理</li>
+<li>RDB 採用子程序處理快照動作，這對 Redis 服務來說執行效率較佳</li>
+</ul>
+<p>RDB 缺點 :</p>
+<ul>
+<li>若是在 RDB 持久化未進行的期間發生當機等中斷服務狀態時，資料都將會遺失</li>
+<li>若是一次要快照的資料較大時，會影響到 Redis 程序的運作</li>
+</ul>
+<h2>AOF</h2>
+AOF設定條件 (2)為預設設定：
+1. appendfsync always
+2. appendfsync everysec
+3. appendfsync no
+
+<p>AOF 優點：</p>
+<ul>
+<li>帶來更高的資料持久性與安全性，因為是採取同步機制進行儲存</li>
+<li>因為採用 append 機制，所以寫入中發生當機現象，也不會破壞原有的內容，也有 redis-check-aof 工具可以協助解決資料一致性問題</li>
+<li>AOF 包含一個完整記錄檔記錄了所有的修改操作，也可以透過 AOF 完成資料重建的動作</li>
+</ul>
+<p>AOF 缺點：</p>
+<ul>
+<li>對相同的資料量來說，AOF 的檔案會比 RDB 檔案來得大</li>
+<li>因為採用同步方式，所以 AOF 在執行的效能上慢於 RDB 機制</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://example.com">Lynn</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="https://example.com/2022/12/19/Redis%E7%AD%86%E8%A8%98/">https://example.com/2022/12/19/Redis%E7%AD%86%E8%A8%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://example.com" target="_blank">🍋阿檸賺大錢走上人生巔峰🍋</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/DB/">DB</a><a class="post-meta__tags" href="/tags/Redis/">Redis</a></div><div class="post_share"><div class="social-share" data-image="/../images/redis.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/12/21/HTML-NOTE/"><img class="prev-cover" src="/../images/html.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">HTML NOTE</div></div></a></div><div class="next-post pull-right"><a href="/2022/12/17/JDBC%E7%AD%86%E8%A8%98/"><img class="next-cover" src="/../images/jdbc.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JDBC筆記</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/lemon2.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lynn</div><div class="author-info__description">嚕貓,賺大錢,躺大床</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LynnHung1206"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/LynnHung1206" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:lynn990908@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis-REmote-DIctionary-Server"><span class="toc-number">1.</span> <span class="toc-text">Redis(REmote DIctionary Server)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.1.</span> <span class="toc-text">功能特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">1.2.</span> <span class="toc-text">安裝</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E8%B3%87%E6%96%99"><span class="toc-number">2.</span> <span class="toc-text">操作資料</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.1.</span> <span class="toc-text">多筆資料處理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.2.</span> <span class="toc-text">處理整數資料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.3.</span> <span class="toc-text">處理位元資料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.4.</span> <span class="toc-text">List資料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.5.</span> <span class="toc-text">Hash資料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.6.</span> <span class="toc-text">Set</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">2.7.</span> <span class="toc-text">Zset</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JSON-%E8%B3%87%E6%96%99%E6%A0%BC%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">JSON 資料格式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Base64-%E8%B3%87%E6%96%99%E6%A0%BC%E5%BC%8F"><span class="toc-number">4.</span> <span class="toc-text">Base64 資料格式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis-%E4%BA%A4%E6%98%93%E6%A9%9F%E5%88%B6"><span class="toc-number">5.</span> <span class="toc-text">Redis 交易機制</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis-%E8%B3%87%E6%96%99%E5%AD%98%E6%B4%BB%E6%A9%9F%E5%88%B6-TTL-Time-To-Live"><span class="toc-number">6.</span> <span class="toc-text">Redis 資料存活機制 TTL(Time To Live)</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Redis-%E6%8C%81%E4%B9%85%E5%8C%96%E6%A9%9F%E5%88%B6"><span class="toc-number">7.</span> <span class="toc-text">Redis 持久化機制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">7.1.</span> <span class="toc-text">RDB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">7.2.</span> <span class="toc-text">AOF</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/02/25/goToWorkLa/" title="終於到這一天"><img src="/./images/C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="終於到這一天"/></a><div class="content"><a class="title" href="/2023/02/25/goToWorkLa/" title="終於到這一天">終於到這一天</a><time datetime="2023-02-25T02:13:52.000Z" title="發表於 2023-02-25 10:13:52">2023-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/21/mybatisInSpring/" title="MyBatis 加入 Spring Boot"><img src="/../images/springmybatis.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MyBatis 加入 Spring Boot"/></a><div class="content"><a class="title" href="/2023/02/21/mybatisInSpring/" title="MyBatis 加入 Spring Boot">MyBatis 加入 Spring Boot</a><time datetime="2023-02-21T11:45:01.000Z" title="發表於 2023-02-21 19:45:01">2023-02-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/20/Spring-boot/" title="Spring boot"><img src="/../images/springboot.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring boot"/></a><div class="content"><a class="title" href="/2023/02/20/Spring-boot/" title="Spring boot">Spring boot</a><time datetime="2023-02-20T12:56:37.000Z" title="發表於 2023-02-20 20:56:37">2023-02-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/" title="基礎面試題"><img src="/./images/interv.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基礎面試題"/></a><div class="content"><a class="title" href="/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/" title="基礎面試題">基礎面試題</a><time datetime="2023-02-15T10:37:17.000Z" title="發表於 2023-02-15 18:37:17">2023-02-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/14/Spring-MVC/" title="Spring MVC"><img src="/./images/spring-mvc.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring MVC"/></a><div class="content"><a class="title" href="/2023/02/14/Spring-MVC/" title="Spring MVC">Spring MVC</a><time datetime="2023-02-14T09:10:17.000Z" title="發表於 2023-02-14 17:10:17">2023-02-14</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Lynn</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到頂部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

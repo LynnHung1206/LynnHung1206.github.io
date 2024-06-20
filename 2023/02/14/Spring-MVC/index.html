@@ -1,0 +1,651 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Spring MVC | 🍋阿檸賺大錢走上人生巔峰🍋</title><meta name="author" content="Lynn"><meta name="copyright" content="Lynn"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="溫馨提示 : 本 blog 皆使用專案管理工具 Maven，其相關依賴要自己去https:&#x2F;&#x2F;mvnrepository.com&#x2F; 複製唷!  What is Spring MVC?  為 Spring framework 中的一個模組(webmvc)，設計模式上為前置控制器模式(Front Controller Pattern)。在 Spring MVC 中，前置控制器稱為 Dispatcher">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring MVC">
+<meta property="og:url" content="https://example.com/2023/02/14/Spring-MVC/index.html">
+<meta property="og:site_name" content="🍋阿檸賺大錢走上人生巔峰🍋">
+<meta property="og:description" content="溫馨提示 : 本 blog 皆使用專案管理工具 Maven，其相關依賴要自己去https:&#x2F;&#x2F;mvnrepository.com&#x2F; 複製唷!  What is Spring MVC?  為 Spring framework 中的一個模組(webmvc)，設計模式上為前置控制器模式(Front Controller Pattern)。在 Spring MVC 中，前置控制器稱為 Dispatcher">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://example.com/images/spring-mvc.png">
+<meta property="article:published_time" content="2023-02-14T09:10:17.000Z">
+<meta property="article:modified_time" content="2023-02-21T03:13:53.384Z">
+<meta property="article:author" content="Lynn">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="框架">
+<meta property="article:tag" content="SpringMVC">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://example.com/images/spring-mvc.png"><link rel="shortcut icon" href="/img/greenlemon.jpg"><link rel="canonical" href="https://example.com/2023/02/14/Spring-MVC/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Spring MVC',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-21 11:13:53'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/lemon2.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./images/spring-mvc.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">🍋阿檸賺大錢走上人生巔峰🍋</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Spring MVC</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2023-02-14T09:10:17.000Z" title="發表於 2023-02-14 17:10:17">2023-02-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2023-02-21T03:13:53.384Z" title="更新於 2023-02-21 11:13:53">2023-02-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E8%A1%93/">技術</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Spring MVC"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>溫馨提示 : 本 blog 皆使用專案管理工具 Maven，其相關依賴要自己去<a target="_blank" rel="noopener" href="https://mvnrepository.com/">https://mvnrepository.com/</a> 複製唷!</p>
+<blockquote>
+<p>What is Spring MVC?</p>
+</blockquote>
+<p>為 Spring framework 中的一個模組(webmvc)，設計模式上為前置控制器模式(Front Controller Pattern)。<br>在 Spring MVC 中，前置控制器稱為 DispatcherServlet，底層依然依靠 Servlet API 運作。</p>
+<p>使用概念 :</p>
+<ul>
+<li>使用 Spring MVC 提供之 API Controller 來撰寫控制器(Controller)</li>
+<li>其也提供了 Model，View 等 API</li>
+<li>一樣使用 IoC&#x2F;DI 將 Controller 託管至 IoC 容器</li>
+<li>DispatcherServlet 收到請求(Request)，會控制交由指定控制器做處理</li>
+</ul>
+<h1 id="Front-Controller-Pattern"><a href="#Front-Controller-Pattern" class="headerlink" title="Front Controller Pattern"></a>Front Controller Pattern</h1><ul>
+<li>Design Pattern 中，針對 MVC 架構提出的模式</li>
+<li>所有請求集中給 Front Controller 接收，再經由⼀個分派器(Dispatcher)，將請求分派給對應的控制器處理</li>
+<li>處理完後回到前置控制器，再由前置控制器取得 View</li>
+<li>最後由前置控制器做出回應(Response)</li>
+</ul>
+<h1 id="DispatcherServlet"><a href="#DispatcherServlet" class="headerlink" title="DispatcherServlet"></a>DispatcherServlet</h1><ul>
+<li>將前置控制器與分派器合而為一，型態為 DispatcherServlet</li>
+<li>為 Servlet API 之類別 HttpServlet 之子代類別</li>
+<li>在⼀般使⽤情況下，不會直接使⽤到 DispatcherServlet 物件，而是透過 web.xml 註冊</li>
+<li>Spring MVC 中唯一的 Servlet</li>
+</ul>
+<h1 id="MVC-架構"><a href="#MVC-架構" class="headerlink" title="MVC 架構"></a>MVC 架構</h1><blockquote>
+<p>Spring MVC 的 MVC 架構，是以 DispatcherServlet 為中⼼設計，再配合其他重要物件來完成請求回應</p>
+</blockquote>
+<ul>
+<li>HandlerMapping : 網址與控制器的映射表</li>
+<li>Controller : 控制器，即 Spring MVC 中的控制器 類別&#x2F;⽅法</li>
+<li>Model : 在此僅指 Model 層運算完的結果</li>
+<li>ViewResolver : View 解析器，可將 View 的邏輯名稱解析成真實的 View</li>
+<li>View : 真實的 View，EX. JSP 檔</li>
+</ul>
+<h1 id="註冊-DispatcherServlet"><a href="#註冊-DispatcherServlet" class="headerlink" title="註冊 DispatcherServlet"></a>註冊 DispatcherServlet</h1><blockquote>
+<p>⼀般會將 DispatcherServlet 設定映射網站根路徑”&#x2F;“，即對此網站的所有請求，皆會經過 DispatcherServlet</p>
+</blockquote>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">..略</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 略 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextClass<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">param-value</span>&gt;</span></span><br><span class="line">org.springframework.web.context.support.AnnotationConfigWebApplicationContext</span><br><span class="line"><span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">param-name</span>&gt;</span>contextConfigLocation<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">param-value</span>&gt;</span>core.config.MvcConfig<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 略 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>同時註冊核心組態類別</p>
+</blockquote>
+<p>除了加上@Configuration 以外，需要實作 WebMvcConfiguer 介面<br>以及做驅動設定@EnableWebMvc，還需要加上@ComponentScan 將 Controller 做掃描</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebMvc</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;web.*.controller&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MvcConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> &#123;</span><br><span class="line"><span class="comment">// 略</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="託管-ViewResolver-元件與靜態資源管理"><a href="#託管-ViewResolver-元件與靜態資源管理" class="headerlink" title="託管 ViewResolver 元件與靜態資源管理"></a>託管 ViewResolver 元件與靜態資源管理</h1><h2>託管 ViewResolver </h2>
+
+<blockquote>
+<p>需要 override configureViewResolvers()，實作並且設定</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebMvc</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;web.*.controller&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MvcConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> &#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">configureViewResolvers</span><span class="params">(ViewResolverRegistry registry)</span> &#123;</span><br><span class="line">  <span class="type">InternalResourceViewResolver</span> <span class="variable">viewResolver</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InternalResourceViewResolver</span>();</span><br><span class="line">  viewResolver.setPrefix(<span class="string">&quot;/WEB-INF/&quot;</span>);</span><br><span class="line">  viewResolver.setSuffix(<span class="string">&quot;.jsp&quot;</span>);</span><br><span class="line">  viewResolver.setContentType(<span class="string">&quot;text/html;charset=UTF-8&quot;</span>);</span><br><span class="line">  registry.viewResolver(viewResolver);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2>靜態資源管理</h2>
+
+<blockquote>
+<p>需要針對靜態資源處理(DefaultServlet)以及重新映射靜態資源</p>
+</blockquote>
+<p>靜態資源處理(DefaultServlet) : 覆寫 configureDefaultServletHandling()</p>
+<p>重新映射靜態資源 : 覆寫 addResourceHandlers()<br>(可隱藏真實路徑)<br>在 MvcConfig 類別中 override configureDefaultServletHandling()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">configureDefaultServletHandling</span><span class="params">(DefaultServletHandlerConfigurer configurer)</span> &#123;</span><br><span class="line">configurer.enable();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> &#123;</span><br><span class="line">registry.addResourceHandler(<span class="string">&quot;/**&quot;</span>).addResourceLocations(<span class="string">&quot;/WEB-INF/&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果有一靜態資源 &#x2F;WEB-INF&#x2F;index.html，會被重新映射至&#x2F;index.html</p>
+</blockquote>
+<h1 id="Model-支援"><a href="#Model-支援" class="headerlink" title="Model 支援"></a>Model 支援</h1><ul>
+<li>Spring MVC 實作 MVC 概念，其支援了 Model(指 Model 層運算完之結果)</li>
+<li>提供 Model 相關 API，做資料綁定(Data Binding)，其資料即為 Servlet API 中的屬性物件(Attribute Object)</li>
+<li>取代 Servlet API 中，scope object 寫法<br>像是 request.setAttribute、request.getAttribute</li>
+</ul>
+<blockquote>
+<p>大部分 MVC &#x2F; MVVM 框架，對 Model 支援僅有資料綁定</p>
+</blockquote>
+<p>使用@ModelAttribute(“識別名”)來綁定屬性物件</p>
+<ul>
+<li>⽤在⽅法 : 綁定⽅法的回傳值。執⾏控制器⽅法前，會先執⾏此⽅法</li>
+<li>⽤在控制器⽅法的參數 : 綁定請求參數</li>
+</ul>
+<blockquote>
+<p>每次對 member&#x2F;useModelAttribute1 發出請求，會先呼叫 memberList()，並綁定此⽅法的回傳值</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;member&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MemberController</span> &#123;</span><br><span class="line">  <span class="meta">@Autowired</span></span><br><span class="line">  <span class="keyword">private</span> MemberService service;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@GetMapping(&quot;useModelAttribute1&quot;)</span></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">useModelAttribute1</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;member/manage&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="meta">@ModelAttribute(&quot;memberList&quot;)</span></span><br><span class="line">  <span class="keyword">private</span> List&lt;Member&gt; <span class="title function_">memberList</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> service.findAll();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>請求參數會⾃動封裝⾄ member 中，加上@ModelAttribute 會再將其綁定</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;member&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MemberController</span> &#123;</span><br><span class="line">  <span class="meta">@Autowired</span></span><br><span class="line">  <span class="keyword">private</span> MemberService service;</span><br><span class="line">  <span class="meta">@GetMapping(&quot;useModelAttribute2&quot;)</span></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">useModelAttribute2</span><span class="params">(<span class="meta">@ModelAttribute(&quot;member&quot;)</span> Member member)</span> &#123;</span><br><span class="line">  <span class="comment">// 略..</span></span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;member/result&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Session-scope"><a href="#Session-scope" class="headerlink" title="Session scope"></a>Session scope</h1><blockquote>
+<p>如要綁定範圍物件，需先使用@ModelAttribute 綁定屬性物件</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;member&quot;)</span></span><br><span class="line"><span class="meta">@SessionAttributes(&#123; &quot;member&quot; &#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MemberController</span> &#123;</span><br><span class="line">  <span class="meta">@Autowired</span></span><br><span class="line">  <span class="keyword">private</span> MemberService service;</span><br><span class="line">  <span class="meta">@PostMapping(&quot;login&quot;)</span></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">login</span><span class="params">(Member member)</span> &#123;</span><br><span class="line">  service.login(member);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;redirect:/result.jsp&quot;</span>;  <span class="comment">//重新導向</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="meta">@ModelAttribute(&quot;member&quot;)</span></span><br><span class="line">  <span class="keyword">public</span> Member <span class="title function_">member</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Member</span>();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>為了取得 Session 範圍物件，使用@SessionAttribute(“識別名”)<br>**只能取得</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;member&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MemberController</span> &#123;</span><br><span class="line">  <span class="meta">@GetMapping(&quot;getInfo&quot;)</span></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">getInfo</span><span class="params">(<span class="meta">@SessionAttribute(&quot;member&quot;)</span> Member member)</span> &#123;</span><br><span class="line">  <span class="comment">// 略..</span></span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;member/edit&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2>RedirectAttributes</h2>
+
+<ul>
+<li><b>Model 的⼦型態</b>，用來綁定暫存(Flash)屬性物件</li>
+<li>Redirect 時可以共享屬性物件</li>
+<li>接收到屬性物件後，自動取消綁定</li>
+<li>Jsp 無法使用</li>
+<li>傳送端與接收端 :<ul>
+<li>addFlashAttribute(“識別名”)</li>
+<li>@ModelAttribute(“識別名”)</li>
+</ul>
+</li>
+<li>若接收端要再往下共享，則可接著使⽤ Model 物件</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestController</span> &#123;</span><br><span class="line">  <span class="meta">@GetMapping(&quot;deliverer&quot;)</span></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">deliverer</span><span class="params">(RedirectAttributes redirectAttributes)</span> &#123;</span><br><span class="line">  redirectAttributes.addFlashAttribute(<span class="string">&quot;name&quot;</span>, <span class="string">&quot;William&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;redirect:/recipient&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="meta">@GetMapping(&quot;recipient&quot;)</span></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">recipient</span><span class="params">(<span class="meta">@ModelAttribute(&quot;name&quot;)</span> String name, Model model)</span> &#123;</span><br><span class="line">  model.addAttribute(<span class="string">&quot;name&quot;</span>, name);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;some_page&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>若想要綁定屬性物件至 Context Scope，可以直接使用 Servlet API 中的 ServletContext 物件，透過@Autowired 注⼊，即可取得 ServletContext 物件</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestController</span> &#123;</span><br><span class="line">  <span class="meta">@Autowired</span></span><br><span class="line">  <span class="keyword">private</span> ServletContext servletContext;</span><br><span class="line">  <span class="comment">// 略..</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="ViewResolver"><a href="#ViewResolver" class="headerlink" title="ViewResolver"></a>ViewResolver</h1><ul>
+<li>ViewResolver 為 Spring MVC 重要物件，為 View 的解析器</li>
+<li>將控制器回傳的 View 的邏輯名稱 解析成 真實的 View</li>
+<li>真實的 View，包含網址中的路徑、檔名，及其他細節設定</li>
+<li>Spring MVC 架構中，⾄少要有⼀個 ViewResolver</li>
+<li>共同⽗型態為 ViewResolver</li>
+</ul>
+<h2>InternalResourceViewResolver</h2>
+
+<ul>
+<li>未託管任何 View 解析器時，預設的 View 解析器</li>
+<li>配合 InternalResourceView 使⽤，即 View 為 Servlet 或 JSP 或 HTML</li>
+<li>將控制器回傳的 View 邏輯名稱，加上 前綴字&#x2F;後綴字<ul>
+<li>setPrefix(“前綴字”) : 設定 View 名稱的前綴字</li>
+<li>setSuffix(“後綴字”) : 設定 View 名稱的後綴字</li>
+<li>setContentType(“MIME Type”) :設定 View 內容的 MIME 　 Type，亦可同時設定⽂字編碼</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebMvc</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;web.*.controller&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MvcConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> &#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">configureViewResolvers</span><span class="params">(ViewResolverRegistry registry)</span> &#123;</span><br><span class="line">  <span class="type">InternalResourceViewResolver</span> <span class="variable">viewResolver</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InternalResourceViewResolver</span>();</span><br><span class="line">  viewResolver.setPrefix(<span class="string">&quot;/WEB-INF/&quot;</span>);</span><br><span class="line">  viewResolver.setSuffix(<span class="string">&quot;.jsp&quot;</span>);</span><br><span class="line">  viewResolver.setContentType(<span class="string">&quot;text/html;charset=UTF-8&quot;</span>);</span><br><span class="line">  registry.viewResolver(viewResolver);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>若控制器回傳邏輯名稱”member&#x2F;result”，則會解析出的真實名稱為”&#x2F;WEB-INF&#x2F;member&#x2F;result.jsp”</p>
+</blockquote>
+<h2>ContentNegotiatingViewResolver</h2>
+
+<ul>
+<li>Spring MVC 架構中，可同時有多個 View 解析器，用以對應多種 View 格式</li>
+<li>所以需要 ContentNegotiatingViewResolver 來管理多個 View 解析器</li>
+<li>解析方式是依照請求標頭(Request Header)中的 Accept 屬性之值，選擇對應的 View 解析器</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 自定義JSON格式的View解析器類別</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JsonViewResolver</span> <span class="keyword">implements</span> <span class="title class_">ViewResolver</span> &#123;</span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> View <span class="title function_">resolveViewName</span><span class="params">(String viewName, Locale locale)</span> &#123;</span><br><span class="line">  <span class="type">MappingJackson2JsonView</span> <span class="variable">view</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MappingJackson2JsonView</span>();</span><br><span class="line">  view.setPrettyPrint(<span class="literal">true</span>);</span><br><span class="line">  <span class="keyword">return</span> view;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebMvc</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;web.*.controller&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MvcConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> &#123;</span><br><span class="line"><span class="comment">// 略..</span></span><br><span class="line"><span class="comment">// 託管JSP格式專用View解析器</span></span><br><span class="line">  <span class="meta">@Bean</span></span><br><span class="line">  <span class="keyword">public</span> ViewResolver <span class="title function_">jspViewResolver</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="type">InternalResourceViewResolver</span> <span class="variable">internalResourceViewResolver</span></span><br><span class="line">  <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">InternalResourceViewResolver</span>();</span><br><span class="line">  internalResourceViewResolver.setPrefix(<span class="string">&quot;/WEB-INF/&quot;</span>);</span><br><span class="line">  internalResourceViewResolver.setSuffix(<span class="string">&quot;.jsp&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> internalResourceViewResolver;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 託管JSON格式專用View解析器</span></span><br><span class="line">  <span class="meta">@Bean</span></span><br><span class="line">  <span class="keyword">public</span> ViewResolver <span class="title function_">jsonViewResolver</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">JsonViewResolver</span>();</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 託管管理多個View解析器的ContentNegotiatingViewResolver元件</span></span><br><span class="line">  <span class="meta">@Bean</span></span><br><span class="line">  <span class="keyword">public</span> ViewResolver <span class="title function_">contentNegotiatingViewResolver</span><span class="params">(ContentNegotiationManager manager)</span> &#123;</span><br><span class="line">  <span class="type">ContentNegotiatingViewResolver</span> <span class="variable">cnvr</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ContentNegotiatingViewResolver</span>();</span><br><span class="line">  cnvr.setContentNegotiationManager(manager);</span><br><span class="line"><span class="comment">// 設定欲管理的View解析器</span></span><br><span class="line">  cnvr.setViewResolvers(Arrays.asList(jspViewResolver(), jsonViewResolver()));</span><br><span class="line">  <span class="keyword">return</span> cnvr;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 設定ContentNegotiatingViewResolver</span></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">configureContentNegotiation</span><span class="params">(ContentNegotiationConfigurer configurer)</span> &#123;</span><br><span class="line">  configurer.defaultContentType(MediaType.TEXT_HTML);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2>RedirectView</h2>
+
+<ul>
+<li>不會經過 View 解析器的解析，所以內含的 View 名稱應為真實名稱</li>
+<li>僅表⽰要重新導向，View 名稱可以是任何資源</li>
+<li>View 名稱不能包含”WEB-INF”</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;member&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MemberController</span> &#123;</span><br><span class="line">  <span class="meta">@Autowired</span></span><br><span class="line">  <span class="keyword">private</span> MemberService service;</span><br><span class="line">  <span class="meta">@PostMapping(&quot;login&quot;)</span></span><br><span class="line">  <span class="keyword">public</span> View <span class="title function_">login</span><span class="params">(Member member)</span> &#123;</span><br><span class="line">  service.login(member);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">RedirectView</span>(<span class="string">&quot;../index.html&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2>跳脫ViewResolver</h2>
+ 
+<ul>
+<li>在某些情況下，確實會希望能不經過View解析器，意即跳脫View解析器</li>
+<li>託管了InternalResourceViewResolver，固定會替View名稱..<ul>
+<li>前⾯加上”&#x2F;WEB-INF&#x2F;“；後⾯加上”.jsp”</li>
+<li>但想轉發(forward&#x2F;redirect)⾄”index.html”</li>
+</ul>
+</li>
+<li>除了使⽤RedirectView之外，Spring MVC另提供特殊前綴字，⽤以跳脫(不能包含”WEB-INF”)</li>
+</ul>
+<p>特殊前綴字 :</p>
+<ul>
+<li>定義在 UrlBasedViewResolver 型態</li>
+<li>FORWARD_URL_PREFIX : 值為”forward:”</li>
+<li>REDIRECT_URL_PREFIX : 值為”redirect:”</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;member&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MemberController</span> &#123;</span><br><span class="line">  <span class="meta">@Autowired</span></span><br><span class="line">  <span class="keyword">private</span> MemberService service;</span><br><span class="line">  <span class="meta">@GetMapping(&quot;login&quot;)</span></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">login</span><span class="params">(Member member)</span> &#123;</span><br><span class="line">  <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> service.login(member);</span><br><span class="line">    <span class="keyword">if</span> (result) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;redirect: ../index.html&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;forward: login.html&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Spring-於-JSTL-支援"><a href="#Spring-於-JSTL-支援" class="headerlink" title="Spring 於 JSTL 支援"></a>Spring 於 JSTL 支援</h1><ul>
+<li>有定義自己的 JSTL(Jsp Standard Tag Library)</li>
+<li>JSP 這種伺服器端渲染(Server Side Render)技術，會造成伺服器負荷過高</li>
+<li>現今則多採⽤客⼾端渲染(Client Side Render)技術，由客⼾端分擔負荷</li>
+</ul>
+<blockquote>
+<p>現今有更好的選擇 – 前端框架</p>
+</blockquote>
+<p>詳情請看講義。</p>
+<h1 id="欄位檢核"><a href="#欄位檢核" class="headerlink" title="欄位檢核"></a>欄位檢核</h1><ul>
+<li>實作 View 層時，常需處理欄位檢核</li>
+<li>欄位需符合當下定義的檢核條件，才會接續下⼀步動作</li>
+<li>實作可使⽤ Hibernate Validator</li>
+<li>另搭配 spring-form 標籤庫及 BindingResult 請看講義</li>
+</ul>
+<p>@NotNull</p>
+<ul>
+<li>不可為 null</li>
+</ul>
+<p>@NotBlank</p>
+<ul>
+<li>不可為 null&#x2F;空字串</li>
+<li>只能⽤在 CharSequence 型態</li>
+</ul>
+<p>@NotEmpty</p>
+<ul>
+<li>不可為 null&#x2F;空</li>
+<li>可⽤在 CharSequence、Array、Collection、Map 等型態</li>
+</ul>
+<p>@Size(min &#x3D; 長度下限, max &#x3D; 長度上限)</p>
+<ul>
+<li>元素個數上下限</li>
+<li>可⽤在 CharSequence、Array、Collection、Map 等型態</li>
+<li>⽤在 CharSequence 表⽰字元個數的上下限</li>
+</ul>
+<p>@Pattern(regexp &#x3D; “表示式”)</p>
+<ul>
+<li>正規表⽰式(Regular Expression)</li>
+</ul>
+<p>@Email</p>
+<ul>
+<li>信箱格式</li>
+</ul>
+<p>@Digital(integer &#x3D; 整數位數, fraction &#x3D; 小數位數)</p>
+<ul>
+<li>位數個數</li>
+</ul>
+<p>@Max(最大值)、@Min(最小值)</p>
+<ul>
+<li>上&#x2F;下 限</li>
+</ul>
+<p>@Positive、@Negative</p>
+<ul>
+<li>正&#x2F;負 數</li>
+</ul>
+<p>@PositiveOrZero、@NegativeOrZero</p>
+<ul>
+<li>正或零&#x2F;負或零</li>
+</ul>
+<p>@DateTimeFormat(pattern &#x3D; “格式”)</p>
+<ul>
+<li>⽇期時間格式</li>
+<li>由 Spring 提供</li>
+<li>EX.@DateTimeFormat(pattern &#x3D; “yyyy-MM-dd”)</li>
+</ul>
+<p>@Past</p>
+<ul>
+<li>過去的⽇期時間</li>
+</ul>
+<p>@PastOrPresent</p>
+<ul>
+<li>過去&#x2F;當下 的⽇期時間</li>
+</ul>
+<h1 id="在-Spring-MVC-中使用檔案傳輸"><a href="#在-Spring-MVC-中使用檔案傳輸" class="headerlink" title="在 Spring MVC 中使用檔案傳輸"></a>在 Spring MVC 中使用檔案傳輸</h1><p>檔案可以放在</p>
+<ul>
+<li>資料庫端 : BLOB</li>
+<li>applocation sever 端 EX. Tomcat 根⽬錄&#x2F;files 可⽤以下⽅式取得 Tomcat 根⽬錄之路徑</li>
+</ul>
+<p>以 Java based 為例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Value(&quot;#&#123;systemProperties[&#x27;catalina.home&#x27;]&#125;&quot;)</span></span><br><span class="line"><span class="keyword">private</span> String tomcatRootPath;</span><br></pre></td></tr></table></figure>
+
+<p>在 web.xml 加上設定啟用檔案上傳功能</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>org.springframework.web.servlet.DispatcherServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">略..</span><br><span class="line"><span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">load-on-startup</span>&gt;</span>1<span class="tag">&lt;/<span class="name">load-on-startup</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">multipart-config</span> /&gt;</span>  <span class="comment">&lt;!-- this --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>並在 pom.xml 中加入依賴 Apache Commons FileUpload 支援</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>commons-fileupload<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-fileupload<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>託管 CommonsMultipartResolver 元件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebMvc</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;web.*.controller&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MvcConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> &#123;</span><br><span class="line"><span class="comment">// 略..</span></span><br><span class="line">  <span class="meta">@Bean</span></span><br><span class="line">  <span class="keyword">public</span> CommonsMultipartResolver <span class="title function_">commonsMultipartResolver</span><span class="params">()</span> &#123;</span><br><span class="line">  <span class="type">CommonsMultipartResolver</span> <span class="variable">resolver</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CommonsMultipartResolver</span>();</span><br><span class="line">  resolver.setDefaultEncoding(<span class="string">&quot;UTF-8&quot;</span>); <span class="comment">// 設定檔名文字編碼</span></span><br><span class="line">  resolver.setMaxUploadSizePerFile(<span class="number">500</span> * <span class="number">1024</span> * <span class="number">1024</span>); <span class="comment">// 設定單檔大小上限</span></span><br><span class="line">  esolver.setMaxUploadSize(<span class="number">4</span> * <span class="number">1024</span> * <span class="number">1024</span> * <span class="number">1024</span>); <span class="comment">// 設定總大小上限</span></span><br><span class="line">  <span class="keyword">return</span> resolver;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2>檔案上傳</h2>
+
+<p>控制器方法 :</p>
+<ul>
+<li>接收檔案 : 參數加上@RequestParam，型態 MultipartFile[]</li>
+<li>另存新檔 (非必要) : 呼叫 transferTo()</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PostMapping(&quot;upload&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">upload</span><span class="params">(<span class="meta">@RequestParam(&quot;img&quot;)</span> MultipartFile[] files)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"><span class="keyword">for</span> (MultipartFile file : files) &#123;</span><br><span class="line">file.transferTo(Paths.get(fileRootPath, file.getOriginalFilename()));</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>img 為請求參數的名稱，須對應前端(HTML&#x2F;JavaScript)中的名稱</p>
+</blockquote>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;file/upload&quot;</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span> <span class="attr">enctype</span>=<span class="string">&quot;multipart/form-data&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">name</span>=<span class="string">&quot;img&quot;</span> <span class="attr">multiple</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=<span class="string">&quot;file&quot;</span> multiple&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">button</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">const</span> input = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;input&#x27;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;button&#x27;</span>).<span class="title function_">addEventListener</span>(<span class="string">&#x27;click&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">const</span> formData = <span class="keyword">new</span> <span class="title class_">FormData</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">for</span> (<span class="keyword">let</span> file <span class="keyword">of</span> input.<span class="property">files</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">formData.<span class="title function_">append</span>(<span class="string">&#x27;img&#x27;</span>, file, file.<span class="property">name</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="title function_">fetch</span>(<span class="string">&#x27;file/upload&#x27;</span>, &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="attr">body</span>: formData</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h2>檔案下載</h2>
+
+<ul>
+<li>讓控制器⽅法回傳 byte[]</li>
+<li>須設定 MIME TYPE<ul>
+<li>@GetMapping(..,produces &#x3D; MediaType.檔案的 MIME TYPE)</li>
+<li>@PostMapping(..,produces &#x3D; MediaType.檔案的 MIME TYPE)</li>
+</ul>
+</li>
+<li>設定回傳值為是 HTTP 的回應本體(Response Body)<ul>
+<li>@ResponseBody</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>假設檔案放在 Tomcat 根⽬錄&#x2F;files</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;file&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FileController</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Value(&quot;#&#123;systemProperties[&#x27;catalina.home&#x27;].concat(&#x27;/files/&#x27;)&#125;&quot;)</span></span><br><span class="line">  <span class="keyword">private</span> String fileRootPath;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@GetMapping(path = &quot;download&quot;, produces = MediaType.IMAGE_PNG_VALUE)</span></span><br><span class="line">  <span class="meta">@ResponseBody</span></span><br><span class="line">  <span class="keyword">public</span> <span class="type">byte</span>[] download() <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">  <span class="keyword">return</span> Files.readAllBytes(Paths.get(fileRootPath, <span class="string">&quot;polar-bears.jpg&quot;</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2>跳出下載視窗</h2>
+ 
+<ul>
+<li>若希望跳出下載視窗，則可將MIME Type設定成application&#x2F;octet-stream</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping(</span></span><br><span class="line"><span class="meta">path = &quot;download&quot;,</span></span><br><span class="line"><span class="meta">produces = MediaType.APPLICATION_OCTET_STREAM_VALUE</span></span><br><span class="line"><span class="meta">)</span></span><br><span class="line"><span class="meta">@ResponseBody</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">byte</span>[] download() <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"><span class="keyword">return</span> Files.readAllBytes(Paths.get(fileRootPath, <span class="string">&quot;polar-bears.jpg&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>另外可以指定預設檔名，詳看講義</p>
+<h1 id="Spring-MVC-的例外處理"><a href="#Spring-MVC-的例外處理" class="headerlink" title="Spring MVC 的例外處理"></a>Spring MVC 的例外處理</h1><ul>
+<li>MVC 架構中，常將例外處理放在 Controller 層</li>
+<li>其他層則是直接將例外拋出(throw)，⽽不可捕捉(catch)</li>
+<li>Spring MVC 對此提供了⽀援，例外處理分成 類別範圍 跟 全域範圍</li>
+<li>對此提供了 例外映射 View 的設定</li>
+</ul>
+<p>規則 :</p>
+<ul>
+<li>須加上 @ExceptionHandler(欲捕捉的例外型態.class)</li>
+<li>可加⼊⼀個例外參數，型態為欲捕捉的例外型態</li>
+</ul>
+<h2>類別範圍的例外處理</h2>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TestController</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">logger</span> <span class="operator">=</span> LogManager.getLogger(MemberController.class);</span><br><span class="line"><span class="comment">// 略..</span></span><br><span class="line">  <span class="meta">@ExceptionHandler(SQLException.class)</span></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">handleSQLException</span><span class="params">(SQLException exception)</span> &#123;</span><br><span class="line">  logger.error(exception.getMessage(), exception);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2>全域範圍例外處理</h2>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ExceptionAdvice</span> &#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">Logger</span> <span class="variable">logger</span> <span class="operator">=</span> LogManager.getLogger(ExceptionAdvice.class);</span><br><span class="line">  <span class="meta">@ExceptionHandler(SQLException.class)</span></span><br><span class="line">  <span class="keyword">public</span> String <span class="title function_">handleSQLException</span><span class="params">(SQLException exception)</span> &#123;</span><br><span class="line">  logger.error(exception.getMessage(), exception);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&quot;error&quot;</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="RESTful-API"><a href="#RESTful-API" class="headerlink" title="RESTful API"></a>RESTful API</h1><blockquote>
+<p>大重點，我真滴不想再寫 JSP ㄌ</p>
+</blockquote>
+<p>在 RESTful API 有其精神，包含 4 個參數傳遞請求方法~</p>
+<h2>前後端分離架構</h2>
+
+<ul>
+<li><p>方便抽換後端技術</p>
+</li>
+<li><p>web 前後端分離，必須使用 AJAX 或是前端框架技術(也是用 AJAX)</p>
+</li>
+<li><p>轉發(forward&#x2F;redirect)⾏為，已不符現今設計</p>
+<ul>
+<li><p>資源浪費：轉發和重定向都需要重新創建請求和響應，這樣會浪費伺服器資源和網絡帶寬。</p>
+</li>
+<li><p>速度緩慢：轉發和重定向需要多次網路往返，這會增加頁面加載時間和用戶等待時間。</p>
+</li>
+<li><p>SEO 不友好：搜索引擎爬取網頁時，通常只會解析一次 URL，如果網站使用了過多的轉發和重定向，搜索引擎可能會漏掉一些重要的內容，進而影響網站的 SEO。</p>
+</li>
+<li><p>難以維護：轉發和重定向會導致多個 URL 之間產生複雜的關係，這樣會增加代碼的複雜度和維護難度。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2>Web API</h2>
+
+<ul>
+<li>僅以<b>回應本體(Response Body)</b>回傳資料，不轉發(forward&#x2F;redirect)</li>
+<li>前端只需透過網址及相關參數(有時可能會加⼊驗證)，就可以跟後端交換資料<br>EX. 透過網址 <a target="_blank" rel="noopener" href="http://william.idv.tw/member/getInfo">http://william.idv.tw/member/getInfo</a>…<ul>
+<li>前端 : 傳”1”給後端</li>
+<li>後端 : 回”1 ithan0117 William”(會員編號、使⽤者名稱、暱稱)給前端</li>
+</ul>
+</li>
+<li>資料傳遞，現今流行使⽤ JSON 格式</li>
+<li>業界常將 Web API 簡稱為 API</li>
+</ul>
+<h2>RESTful API</h2>
+
+<ul>
+<li>一種架構風格(符合 REST ⾵格)</li>
+<li>操作同⼀個資源(Resource)，使⽤同⼀個網址(URI)</li>
+<li>再以 HTTP 的請求⽅法(Request Method)，來決定進⾏何種操作</li>
+<li>精神為使用請求方法要符合作的事情</li>
+</ul>
+<p>四個請求方法 :</p>
+<ul>
+<li>POST<ul>
+<li>操作 : 新增</li>
+<li>參數傳遞方式 : 使用請求本體(Request Body)</li>
+<li>格式 : 現今流⾏使⽤ JSON 格式</li>
+</ul>
+</li>
+<li>PUT<ul>
+<li>操作 : 修改</li>
+<li>參數傳遞方式 : 使用請求本體(Request Body)</li>
+<li>格式 : 現今流⾏使⽤ JSON 格式</li>
+</ul>
+</li>
+<li>DELETE<ul>
+<li>操作 : 刪除</li>
+<li>參數傳遞方式 : 使用路徑變數(Path Variable)</li>
+<li>格式 : ⽤網址路徑當參數</li>
+</ul>
+</li>
+<li>GET<ul>
+<li>操作 : 查詢</li>
+<li>參數傳遞方式 : 使用路徑變數(Path Variable)</li>
+<li>格式 : ⽤網址路徑當參數</li>
+</ul>
+</li>
+</ul>
+<p>因為需要傳遞 JSON 資料需要做組態設定，Spring MVC 提供 MappingJackson2HttpMessageConverter 型態，此型態底層使用 JSON API 為 JACKSON</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.fasterxml.jackson.core<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jackson-databind<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">version</span>&gt;</span>2.14.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>託管 MappingJackson2HttpMessageConverter</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebMvc</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;web.*.controller&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MvcConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> &#123;</span><br><span class="line"><span class="comment">// 略..</span></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">configureMessageConverters</span><span class="params">(List&lt;HttpMessageConverter&lt;?&gt;&gt; converters)</span> &#123;</span><br><span class="line">  <span class="type">MappingJackson2HttpMessageConverter</span> <span class="variable">messageConverter</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MappingJackson2HttpMessageConverter</span>();</span><br><span class="line">  messageConverter.setPrettyPrint(<span class="literal">true</span>);</span><br><span class="line">  converters.add(messageConverter);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>對應各請求方法</p>
+<ul>
+<li>@PostMapping&#x2F;@DeleteMapping&#x2F;@PutMapping&#x2F;@GetMapping</li>
+<li>可⽤@RequestMapping(method &#x3D; {方法 1,方法 2,…,方法 N})，對應多個請求⽅法</li>
+</ul>
+<p>參數傳遞</p>
+<ul>
+<li>路徑變數 : @PathVariable</li>
+<li>請求本體 : @RequestBody</li>
+</ul>
+<p>回應本體</p>
+<ul>
+<li>@ResponseBody</li>
+<li>控制器類別改加上@RestController，<b>則可省去@ResponseBody</b></li>
+<li>可配合 POJO、List&lt;POJO&gt;、Map、void(無回應本體)、ResponseEntity 等型態</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping(&quot;member&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MemberRestController</span> &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>member，前端統⼀使用此網址，操作會員資料</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 新增會員</span></span><br><span class="line"><span class="meta">@PostMapping</span></span><br><span class="line"><span class="keyword">public</span> Core <span class="title function_">create</span><span class="params">(<span class="meta">@RequestBody</span> Member member)</span> &#123;</span><br><span class="line"><span class="keyword">return</span> service.register(member);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 刪除會員</span></span><br><span class="line"><span class="meta">@DeleteMapping(&quot;&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="keyword">public</span> Core <span class="title function_">delete</span><span class="params">(<span class="meta">@PathVariable</span> Integer id)</span> &#123;</span><br><span class="line"><span class="keyword">final</span> <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> service.remove(id);</span><br><span class="line"><span class="type">Core</span> <span class="variable">core</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Core</span>();</span><br><span class="line">core.setSuccessful(result);</span><br><span class="line">core.setMessage(result ? <span class="string">&quot;刪除成功&quot;</span> : <span class="string">&quot;刪除失敗&quot;</span>);</span><br><span class="line"><span class="keyword">return</span> core;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 修改會員</span></span><br><span class="line"><span class="meta">@PutMapping</span></span><br><span class="line"><span class="keyword">public</span> Core <span class="title function_">update</span><span class="params">(<span class="meta">@RequestBody</span> Member member)</span> &#123;</span><br><span class="line"><span class="keyword">final</span> <span class="type">boolean</span> <span class="variable">result</span> <span class="operator">=</span> service.save(member);</span><br><span class="line"><span class="type">Core</span> <span class="variable">core</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Core</span>();</span><br><span class="line">core.setSuccessful(result);</span><br><span class="line">core.setMessage(result ? <span class="string">&quot;修改成功&quot;</span> : <span class="string">&quot;修改失敗&quot;</span>);</span><br><span class="line"><span class="keyword">return</span> core;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 查詢會員</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;&#123;id&#125;&quot;)</span> <span class="comment">//路徑變數，網址member/1， id值就會是1</span></span><br><span class="line"><span class="keyword">public</span> Member <span class="title function_">read</span><span class="params">(<span class="meta">@PathVariable</span> Integer id)</span> &#123;</span><br><span class="line"><span class="keyword">return</span> dao.selectById(id);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 查詢全部會員</span></span><br><span class="line"><span class="meta">@GetMapping</span></span><br><span class="line"><span class="keyword">public</span> List&lt;Member&gt; <span class="title function_">readAll</span><span class="params">()</span> &#123;</span><br><span class="line"><span class="keyword">return</span> dao.selectAll();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>RESTful 也有檔案傳輸，以及 JSON 格式屬性對應和日期時間格式化，處理跨域請求，詳見講義</p>
+</blockquote>
+<h1 id="處理-做掉-DispatcherServlet-自行定義部屬描述類別"><a href="#處理-做掉-DispatcherServlet-自行定義部屬描述類別" class="headerlink" title="處理(做掉) DispatcherServlet(自行定義部屬描述類別)"></a>處理(做掉) DispatcherServlet(自行定義部屬描述類別)</h1><ul>
+<li>Servlet 3 後，web.xml 為非必要，可用 Java based 取代</li>
+<li>Spring MVC 有支援，可在專案啟動時，就啟用 DispatcherServlet(不需要再設定 loadOnStartup)</li>
+</ul>
+<p>自行定義部屬描述類別 :</p>
+<ul>
+<li>需要繼承 AbstractAnnotationConfigDispatcherServletInitializer</li>
+<li>覆寫 getRootConfigClasses() –指定 Spring 核⼼組態類別</li>
+<li>覆寫 getServletConfigClasses() – 指定 Spring MVC 核⼼組態類別</li>
+<li>覆寫 getServletMappings() – 設定 DispatcherServlet 映射路徑</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebAppInitializer</span></span><br><span class="line"><span class="keyword">extends</span> <span class="title class_">AbstractAnnotationConfigDispatcherServletInitializer</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//指定 Spring 核⼼組態類別</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Class&lt;?&gt;[] getRootConfigClasses() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Class</span>[] &#123; AppConfig.class &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//指定 Spring MVC 核⼼組態類</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Class&lt;?&gt;[] getServletConfigClasses() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Class</span>[] &#123; MvcConfig.class &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//設定 DispatcherServlet 映射路徑</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> String[] getServletMappings() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">String</span>[] &#123; <span class="string">&quot;/&quot;</span> &#125;;  <span class="comment">// &quot;/&quot;映射網站根路徑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2>設定filter</h2>
+
+<p>在 部屬描述類別 實作 getServletFilters()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebAppInitializer</span></span><br><span class="line"><span class="keyword">extends</span> <span class="title class_">AbstractAnnotationConfigDispatcherServletInitializer</span> &#123;</span><br><span class="line"><span class="comment">// 略</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> Filter[] getServletFilters() &#123;</span><br><span class="line">    <span class="type">CharacterEncodingFilter</span> <span class="variable">characterEncodingFilter</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CharacterEncodingFilter</span>();</span><br><span class="line">    characterEncodingFilter.setEncoding(<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">    <span class="type">OpenSessionInViewFilter</span> <span class="variable">openSessionInViewFilter</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OpenSessionInViewFilter</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Filter</span>[] &#123; characterEncodingFilter, openSessionInViewFilter &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2>檔案上傳</h2>
+
+<blockquote>
+<p>需要使用再加即可</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebAppInitializer</span></span><br><span class="line"><span class="keyword">extends</span> <span class="title class_">AbstractAnnotationConfigDispatcherServletInitializer</span> &#123;</span><br><span class="line"><span class="comment">// 略</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">customizeRegistration</span><span class="params">(Dynamic registration)</span> &#123;</span><br><span class="line">    registration.setMultipartConfig(<span class="keyword">new</span> <span class="title class_">MultipartConfigElement</span>(<span class="string">&quot;&quot;</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>預設首頁是放在 Spring MVC 組態類別而非部屬描述類別</p>
+</blockquote>
+<ul>
+<li>同 web.xml 中的&lt;welcome-file-list&gt;&lt;welcome-file&gt;</li>
+<li>須配合 ViewResolver&#x2F;靜態資源管理 使⽤</li>
+<li>前面設定前綴字的那個要註解掉</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebMvc</span></span><br><span class="line"><span class="meta">@ComponentScan(&quot;web.*.controller&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MvcConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> &#123;</span><br><span class="line"><span class="comment">// 略</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addResourceHandlers</span><span class="params">(ResourceHandlerRegistry registry)</span> &#123;</span><br><span class="line">    registry.addResourceHandler(<span class="string">&quot;/**&quot;</span>).addResourceLocations(<span class="string">&quot;/WEB-INF/&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addViewControllers</span><span class="params">(ViewControllerRegistry registry)</span> &#123;</span><br><span class="line">    registry.addViewController(<span class="string">&quot;/&quot;</span>).setViewName(<span class="string">&quot;index.html&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>預設⾸⾴為 WEB-INF&#x2F;index.html</p>
+</blockquote>
+<h1 id="跟-web-xml-說再見"><a href="#跟-web-xml-說再見" class="headerlink" title="跟 web.xml 說再見"></a>跟 web.xml 說再見</h1><blockquote>
+<p>pom.xml 預設下必須有 web.xml，要殺掉他需要設定略過檢查 web.xml</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;project 略..&gt;</span><br><span class="line">&lt;build&gt;</span><br><span class="line">&lt;finalName&gt;spring-exercise&lt;/finalName&gt;</span><br><span class="line">&lt;plugins&gt;</span><br><span class="line">&lt;!-- 略 --&gt;</span><br><span class="line">&lt;plugin&gt;</span><br><span class="line">&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;maven-war-plugin&lt;/artifactId&gt;</span><br><span class="line">&lt;version&gt;3.3.2&lt;/version&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;failOnMissingWebXml&gt;false&lt;/failOnMissingWebXml&gt; &lt;!-- 大重點 --&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br><span class="line">&lt;/plugin&gt;</span><br><span class="line">&lt;/plugins&gt;</span><br><span class="line">&lt;/build&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Spring-WebSocket"><a href="#Spring-WebSocket" class="headerlink" title="Spring-WebSocket"></a>Spring-WebSocket</h1><blockquote>
+<p>dependency 自己加</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ChatWebSocketHandler</span> <span class="keyword">extends</span> <span class="title class_">TextWebSocketHandler</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Set&lt;WebSocketSession&gt; connectedSessionSet = Collections.synchronizedSet(<span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;());</span><br><span class="line"></span><br><span class="line">    <span class="comment">//當Client端連線連上時，會⾃動呼叫此⽅法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">afterConnectionEstablished</span><span class="params">(WebSocketSession session)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    connectedSessionSet.add(session);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//當收到Client端傳遞的訊息時，會⾃動呼叫此⽅法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">handleTextMessage</span><span class="params">(WebSocketSession session, TextMessage message)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">      <span class="keyword">for</span> (WebSocketSession connectedSession : connectedSessionSet) &#123;</span><br><span class="line">        <span class="keyword">if</span> (connectedSession.isOpen()) &#123;</span><br><span class="line">        connectedSession.sendMessage(message);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        connectedSessionSet.remove(connectedSession);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//當Client端連線關閉時，會⾃動呼叫此⽅法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">afterConnectionClosed</span><span class="params">(WebSocketSession session, CloseStatus status)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    connectedSessionSet.remove(session);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2>自定義WebSocket核心組態類別</h2>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebSocket</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebSocketConfig</span> <span class="keyword">implements</span> <span class="title class_">WebSocketConfigurer</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">registerWebSocketHandlers</span><span class="params">(WebSocketHandlerRegistry  registry)</span> &#123;</span><br><span class="line">    registry.addHandler(webSocketHandler(), <span class="string">&quot;/chat&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> WebSocketHandler <span class="title function_">webSocketHandler</span><span class="params">()</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">ChatWebSocketHandler</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>前端程式詳見講義</p>
+</blockquote>
+<blockquote>
+<p>Spring STOMP 為進階寫法，詳情請洽官方文件</p>
+</blockquote>
+<h1 id="Spring-Scheduling"><a href="#Spring-Scheduling" class="headerlink" title="Spring Scheduling"></a>Spring Scheduling</h1><blockquote>
+<p>定義在模組 Spring-Context</p>
+</blockquote>
+<p>自定義 Scheduling 核心組態類別</p>
+<ul>
+<li>加上@Scheduled(cron &#x3D; “CRON 表⽰式”) – 設定觸發時機</li>
+<li>加上@Async – 設定非同步</li>
+<li>撰寫想要做的事</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableScheduling</span></span><br><span class="line"><span class="meta">@EnableAsync</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SchedulingConfig</span> &#123;</span><br><span class="line">    <span class="meta">@Scheduled(cron = &quot;* * * * * *&quot;)</span> <span class="comment">//類Cron表⽰式。每秒執行⼀次</span></span><br><span class="line">    <span class="meta">@Async</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">task1</span><span class="params">()</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;task1: &quot;</span>+ <span class="keyword">new</span> <span class="title class_">Time</span>(System.currentTimeMillis()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://example.com">Lynn</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="https://example.com/2023/02/14/Spring-MVC/">https://example.com/2023/02/14/Spring-MVC/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://example.com" target="_blank">🍋阿檸賺大錢走上人生巔峰🍋</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/%E6%A1%86%E6%9E%B6/">框架</a><a class="post-meta__tags" href="/tags/SpringMVC/">SpringMVC</a></div><div class="post_share"><div class="social-share" data-image="/./images/spring-mvc.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/"><img class="prev-cover" src="/./images/interv.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">基礎面試題</div></div></a></div><div class="next-post pull-right"><a href="/2023/02/10/Spring/"><img class="next-cover" src="/./images/spring.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Spring</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相關推薦</span></div><div class="relatedPosts-list"><div><a href="/2023/02/10/Spring/" title="Spring"><img class="cover" src="/./images/spring.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-10</div><div class="title">Spring</div></div></a></div><div><a href="/2023/02/20/Spring-boot/" title="Spring boot"><img class="cover" src="/../images/springboot.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-20</div><div class="title">Spring boot</div></div></a></div><div><a href="/2022/12/17/JDBC%E7%AD%86%E8%A8%98/" title="JDBC筆記"><img class="cover" src="/../images/jdbc.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-17</div><div class="title">JDBC筆記</div></div></a></div><div><a href="/2022/12/03/Java%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-1/" title="Java學習筆記(一)"><img class="cover" src="/../images/java.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-03</div><div class="title">Java學習筆記(一)</div></div></a></div><div><a href="/2022/12/14/Java%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-2/" title="Java學習筆記(二)"><img class="cover" src="/../images/java.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">Java學習筆記(二)</div></div></a></div><div><a href="/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/" title="基礎面試題"><img class="cover" src="/./images/interv.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-15</div><div class="title">基礎面試題</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/lemon2.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lynn</div><div class="author-info__description">嚕貓,賺大錢,躺大床</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LynnHung1206"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/LynnHung1206" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:lynn990908@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Front-Controller-Pattern"><span class="toc-number">1.</span> <span class="toc-text">Front Controller Pattern</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DispatcherServlet"><span class="toc-number">2.</span> <span class="toc-text">DispatcherServlet</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MVC-%E6%9E%B6%E6%A7%8B"><span class="toc-number">3.</span> <span class="toc-text">MVC 架構</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A8%BB%E5%86%8A-DispatcherServlet"><span class="toc-number">4.</span> <span class="toc-text">註冊 DispatcherServlet</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A8%97%E7%AE%A1-ViewResolver-%E5%85%83%E4%BB%B6%E8%88%87%E9%9D%9C%E6%85%8B%E8%B3%87%E6%BA%90%E7%AE%A1%E7%90%86"><span class="toc-number">5.</span> <span class="toc-text">託管 ViewResolver 元件與靜態資源管理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">5.1.</span> <span class="toc-text">託管 ViewResolver </span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">5.2.</span> <span class="toc-text">靜態資源管理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Model-%E6%94%AF%E6%8F%B4"><span class="toc-number">6.</span> <span class="toc-text">Model 支援</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Session-scope"><span class="toc-number">7.</span> <span class="toc-text">Session scope</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">7.1.</span> <span class="toc-text">RedirectAttributes</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ViewResolver"><span class="toc-number">8.</span> <span class="toc-text">ViewResolver</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">8.1.</span> <span class="toc-text">InternalResourceViewResolver</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">8.2.</span> <span class="toc-text">ContentNegotiatingViewResolver</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">8.3.</span> <span class="toc-text">RedirectView</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">8.4.</span> <span class="toc-text">跳脫ViewResolver</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-%E6%96%BC-JSTL-%E6%94%AF%E6%8F%B4"><span class="toc-number">9.</span> <span class="toc-text">Spring 於 JSTL 支援</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AC%84%E4%BD%8D%E6%AA%A2%E6%A0%B8"><span class="toc-number">10.</span> <span class="toc-text">欄位檢核</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9C%A8-Spring-MVC-%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%AA%94%E6%A1%88%E5%82%B3%E8%BC%B8"><span class="toc-number">11.</span> <span class="toc-text">在 Spring MVC 中使用檔案傳輸</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">11.1.</span> <span class="toc-text">檔案上傳</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">11.2.</span> <span class="toc-text">檔案下載</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">11.3.</span> <span class="toc-text">跳出下載視窗</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-MVC-%E7%9A%84%E4%BE%8B%E5%A4%96%E8%99%95%E7%90%86"><span class="toc-number">12.</span> <span class="toc-text">Spring MVC 的例外處理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">12.1.</span> <span class="toc-text">類別範圍的例外處理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">12.2.</span> <span class="toc-text">全域範圍例外處理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#RESTful-API"><span class="toc-number">13.</span> <span class="toc-text">RESTful API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">13.1.</span> <span class="toc-text">前後端分離架構</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">13.2.</span> <span class="toc-text">Web API</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">13.3.</span> <span class="toc-text">RESTful API</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%99%95%E7%90%86-%E5%81%9A%E6%8E%89-DispatcherServlet-%E8%87%AA%E8%A1%8C%E5%AE%9A%E7%BE%A9%E9%83%A8%E5%B1%AC%E6%8F%8F%E8%BF%B0%E9%A1%9E%E5%88%A5"><span class="toc-number">14.</span> <span class="toc-text">處理(做掉) DispatcherServlet(自行定義部屬描述類別)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">14.1.</span> <span class="toc-text">設定filter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">14.2.</span> <span class="toc-text">檔案上傳</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%9F-web-xml-%E8%AA%AA%E5%86%8D%E8%A6%8B"><span class="toc-number">15.</span> <span class="toc-text">跟 web.xml 說再見</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-WebSocket"><span class="toc-number">16.</span> <span class="toc-text">Spring-WebSocket</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">16.1.</span> <span class="toc-text">自定義WebSocket核心組態類別</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Spring-Scheduling"><span class="toc-number">17.</span> <span class="toc-text">Spring Scheduling</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/02/25/goToWorkLa/" title="終於到這一天"><img src="/./images/C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="終於到這一天"/></a><div class="content"><a class="title" href="/2023/02/25/goToWorkLa/" title="終於到這一天">終於到這一天</a><time datetime="2023-02-25T02:13:52.000Z" title="發表於 2023-02-25 10:13:52">2023-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/21/mybatisInSpring/" title="MyBatis 加入 Spring Boot"><img src="/../images/springmybatis.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MyBatis 加入 Spring Boot"/></a><div class="content"><a class="title" href="/2023/02/21/mybatisInSpring/" title="MyBatis 加入 Spring Boot">MyBatis 加入 Spring Boot</a><time datetime="2023-02-21T11:45:01.000Z" title="發表於 2023-02-21 19:45:01">2023-02-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/20/Spring-boot/" title="Spring boot"><img src="/../images/springboot.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring boot"/></a><div class="content"><a class="title" href="/2023/02/20/Spring-boot/" title="Spring boot">Spring boot</a><time datetime="2023-02-20T12:56:37.000Z" title="發表於 2023-02-20 20:56:37">2023-02-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/" title="基礎面試題"><img src="/./images/interv.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基礎面試題"/></a><div class="content"><a class="title" href="/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/" title="基礎面試題">基礎面試題</a><time datetime="2023-02-15T10:37:17.000Z" title="發表於 2023-02-15 18:37:17">2023-02-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/14/Spring-MVC/" title="Spring MVC"><img src="/./images/spring-mvc.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring MVC"/></a><div class="content"><a class="title" href="/2023/02/14/Spring-MVC/" title="Spring MVC">Spring MVC</a><time datetime="2023-02-14T09:10:17.000Z" title="發表於 2023-02-14 17:10:17">2023-02-14</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Lynn</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到頂部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

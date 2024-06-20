@@ -1,0 +1,317 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>基礎面試題 | 🍋阿檸賺大錢走上人生巔峰🍋</title><meta name="author" content="Lynn"><meta name="copyright" content="Lynn"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="基本型別記得看一下。。。太自信臨場忘記哭阿物件導向三特性基本題  封裝、繼承、多型封裝 : 存取權限分為 private, default, protected 與 public，將屬性和方法包裝成類別方便外界對其存取，使用 scope 修飾子來提升安全性。繼承 : 主要目的就是提高程式的重複使用性，子類別將會繼承到父類別中所有可以存取的成員，包括變數與方法。子類別可以加入新方法或是 overr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基礎面試題">
+<meta property="og:url" content="https://example.com/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/index.html">
+<meta property="og:site_name" content="🍋阿檸賺大錢走上人生巔峰🍋">
+<meta property="og:description" content="基本型別記得看一下。。。太自信臨場忘記哭阿物件導向三特性基本題  封裝、繼承、多型封裝 : 存取權限分為 private, default, protected 與 public，將屬性和方法包裝成類別方便外界對其存取，使用 scope 修飾子來提升安全性。繼承 : 主要目的就是提高程式的重複使用性，子類別將會繼承到父類別中所有可以存取的成員，包括變數與方法。子類別可以加入新方法或是 overr">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://example.com/images/interv.jpg">
+<meta property="article:published_time" content="2023-02-15T10:37:17.000Z">
+<meta property="article:modified_time" content="2023-02-27T03:52:13.952Z">
+<meta property="article:author" content="Lynn">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="面試">
+<meta property="article:tag" content="基礎">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://example.com/images/interv.jpg"><link rel="shortcut icon" href="/img/greenlemon.jpg"><link rel="canonical" href="https://example.com/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '複製成功',
+    error: '複製錯誤',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: true,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '基礎面試題',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-27 11:52:13'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/lemon2.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">4</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/./images/interv.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">🍋阿檸賺大錢走上人生巔峰🍋</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">基礎面試題</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2023-02-15T10:37:17.000Z" title="發表於 2023-02-15 18:37:17">2023-02-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2023-02-27T03:52:13.952Z" title="更新於 2023-02-27 11:52:13">2023-02-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E9%9D%A2%E8%A9%A6/">面試</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="基礎面試題"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">閱讀量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>基本型別記得看一下。。。太自信臨場忘記哭阿<br>物件導向三特性基本題</p>
+</blockquote>
+<h1 id="封裝、繼承、多型"><a href="#封裝、繼承、多型" class="headerlink" title="封裝、繼承、多型"></a>封裝、繼承、多型</h1><p>封裝 : 存取權限分為 private, default, protected 與 public，將屬性和方法包裝成類別方便外界對其存取，使用 scope 修飾子來提升安全性。<br>繼承 : 主要目的就是提高程式的重複使用性，子類別將會繼承到父類別中所有可以存取的成員，包括變數與方法。子類別可以加入新方法或是 override 父類別方法。<br>多形 : 使用同一個操作介面操作不同物件實例。</p>
+<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><p>泛型提供我們在使用集合時編譯時期的安全檢查，可預先指定集合裡能存放的物件類型，&lt;&gt;內只能放參考型別(類別,陣列,介面),所以要放基本型別要放包裝後的(對應的包裝類別)。</p>
+<h1 id="StringBuffer-與-StringBuilder"><a href="#StringBuffer-與-StringBuilder" class="headerlink" title="StringBuffer 與 StringBuilder"></a>StringBuffer 與 StringBuilder</h1><p>String 類別不可以在原來的記憶體改變內容，已經產生的字串會丟到 String pool 等待下次需要時叫出。<br>StringBuffer 類別則可以在原字串所在記憶體改變字串內容，包含 append, insert, delete, replace。</p>
+<blockquote>
+<p>StringBuffer 字串與 String 字串不可以比較 (沒有意義)，如要比較要用同類別才有意義，如真的要比較可以使用 StringBuffer 的 toString 方法</p>
+</blockquote>
+<p>StringBuilder 類別是 JDK 5 的新類別，其用法與 StringBuffer 類別完全一樣(append, insert, delete,<br>replace)</p>
+<p>但是!<br>舊類別 StringBuffer 是 thread-safe(執行續安全)，新類別 StringBuilder 則是 non-thread-safe</p>
+<blockquote>
+<p>如果不考慮多執行緒的問題就可以使用 StringBuilder 來提升執行的效率</p>
+</blockquote>
+<p>常見於結合 BufferedReader 的 readLine()方法進行文字串接，對執行資源損耗減輕不小。</p>
+<h1 id="甚麼是執行緒安全"><a href="#甚麼是執行緒安全" class="headerlink" title="甚麼是執行緒安全"></a>甚麼是執行緒安全</h1><blockquote>
+<p>三個指標 原子性 有序性 可見性</p>
+</blockquote>
+<blockquote>
+<p>當「一個」類別在被「多個」執行緒存取的情況下，仍能「正確」運作，就是執行緒安全</p>
+</blockquote>
+<ul>
+<li>如果類別是 Stateless，它就是執行緒安全，因為「沒」有「共享」 的「狀態」 可以被修改。</li>
+<li>如果類別是 Immutable，它就是執行緒安全，因為沒有「可」修改的「狀態」。</li>
+<li>如果類別方法在操作狀態時不具備原子性(Atomicity)，它就不是執行緒安全，會因為各種不同的時間差造成 race condition。</li>
+</ul>
+<p>例如書上最常見的 count++，其實是 read-modify-write 3 個操作，如果兩個執行緒剛好一前一後讀到同一個值，那就會有一個 modify 的結果消失了(lost update)。</p>
+<p>如何讓它 Atomic?</p>
+<ul>
+<li>synchronized</li>
+<li>java.util.concurrent.Lock</li>
+<li>CAS (Compare-and-Swap)<br>(e.g. AtomicInteger 的 compareAndSet)</li>
+</ul>
+<blockquote>
+<p>感謝爪哇群 GC 大大的總結真是太精闢了 QQ</p>
+</blockquote>
+<h1 id="final-與-finally-與-finalize"><a href="#final-與-finally-與-finalize" class="headerlink" title="final 與 finally 與 finalize"></a>final 與 finally 與 finalize</h1><p>final 為 Java 一關鍵字。</p>
+<ul>
+<li>若一個變數被宣告為 final，表示此變數在初始化過後不得再變更，也就是常數。</li>
+<li>若一個方法被宣告為 final，表示不能被 override</li>
+<li>若一個類別被宣告為 final，表示不能被繼承(絕子絕孫)</li>
+<li>若一個物件參考變數被宣告為 final，表示初始化後不能再指向另一個物件(更換門牌)</li>
+</ul>
+<p>finally 為 Java 一關鍵字。</p>
+<ul>
+<li>是無論發生什麼情況皆會執行的程式區塊</li>
+<li>置於所有 catch { }的後面</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		System.out.println(getInt());</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">getInt</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		&#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<p>猜猜會印出甚麼?<br>答案是 3!!!<br>不管有沒有異常，finally block 中都會被執行，其包含在 try catch 中有 return 的狀況。</p>
+<p>try 語句在 return 前，執行完其他的操作，保留好 return 值，之後進入 finally block 時有幾種狀況 :</p>
+<ul>
+<li>如果 finally block 有 return 語句，會將前面保留的 return 語句覆蓋，如此無法得到在之前保留好的 return 語句。</li>
+<li>如果 finally block 沒有 return 語句，也沒有要改變 return 值，順序為執行完 finally 中的事情，再 return try 中保留的值。</li>
+</ul>
+<p>詳見 <a target="_blank" rel="noopener" href="https://itimetraveler.github.io/2017/09/20/%E3%80%90Java%E3%80%91try-catch-finally%E8%AF%AD%E5%8F%A5%E4%B8%ADreturn%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E6%80%9D%E8%80%83/">https://itimetraveler.github.io/2017/09/20/%E3%80%90Java%E3%80%91try-catch-finally%E8%AF%AD%E5%8F%A5%E4%B8%ADreturn%E7%9A%84%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F%E6%80%9D%E8%80%83/</a></p>
+<blockquote>
+<p>被考到了哭阿，但通常不會寫這種為了考而考的題目</p>
+</blockquote>
+<p>(少考)<br>finalize 類似於解構函式，我們不能強制垃圾收集器(GC)執行和銷燬物件，但可以使用此方法，只能被呼叫一次。<br>Java 執行時環境 (JRE) 會呼叫 finalize() 方法來關閉連線，例如網路和資料庫連線。</p>
+<h1 id="static"><a href="#static" class="headerlink" title="static"></a>static</h1><ul>
+<li>實體變數和方法若是宣告為 static，則此變數和方法即成為類別變數(或稱靜態變數)和類別方法(或稱靜態方法)</li>
+<li>宣告為 static 的變數和方法，是屬於此類別所有物件共用的</li>
+<li>static 會在.class 檔載入時，將所有 static 的方法或變數載入 global 記憶體</li>
+<li>static 方法不能被複寫(建構子也不行)，但子類別可以直接呼叫父類別方法使用</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Son</span> <span class="keyword">extends</span> <span class="title class_">Dad</span> &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">earnMoney</span><span class="params">()</span> &#123;</span><br><span class="line">		<span class="built_in">super</span>.earnMoney();</span><br><span class="line">		System.out.println(<span class="string">&quot;goods&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">		Son.money();  <span class="comment">//money 為父類別靜態方法</span></span><br><span class="line">		<span class="type">Son</span> <span class="variable">son</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Son</span>();</span><br><span class="line">		son.earnMoney();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="x3D-x3D-與-equals"><a href="#x3D-x3D-與-equals" class="headerlink" title="&#x3D;&#x3D; 與 .equals"></a>&#x3D;&#x3D; 與 .equals</h1><p>&#x3D;&#x3D; 是比較<b>記憶體位址</b>而不是內容，如果要比較字串內容要使用 String 物件提供的.equals()作比較</p>
+<h1 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h1><p>主要分為 List 和 Set。(還有 Queue)</p>
+<p>Queue 類似生活中的隊伍，有順序性，但只能對第一個元素做取出，取出即移除。適合資料消化操作。</p>
+<h2>LinkedList與ArrayList差別</h2>
+
+<ul>
+<li><p>ArrayList 為連續的線性空間。<br>優點是<b>用索引值的存取表現佳</b>，但缺點為<b>不適合對裡面元素做插入或移除</p>
+</b>
+</li>
+<li><p>LinkedList 為鏈結的資料結構，非常適合對頭&#x2F;尾元素進行處理。<br>優點是<b>適合對元素常常插入或移除</b>，但缺點為<b>用索引值的存取表現較差</b></p>
+</li>
+</ul>
+<blockquote>
+<p>如果要對自定義物件做大小排序請實作 Comparable 介面</p>
+</blockquote>
+<h1 id="Overload-和-Override"><a href="#Overload-和-Override" class="headerlink" title="Overload 和 Override"></a>Overload 和 Override</h1><h2>Overloading</h2>
+
+<ul>
+<li>Overloading 讓我們可以用統一的方法名稱來呼叫相同功能的方法，Java 會自動依據參數的數目及不同的資料型別，自動呼叫對應的方法</li>
+<li>無法根據回傳值型態的不同而區別</li>
+</ul>
+<h2>Override</h2>
+
+<ul>
+<li>子類別繼承父類別後，不滿意父類別定義的方法，子類別可以在繼承後重新改寫，即為 override</li>
+<li>方法名稱、參數個數、參數型別與回傳值皆須跟父類別裡被覆寫的方法相同</li>
+<li>JDK 1.5 開始，如回傳型態是類別，則可以是原方法回傳值型別的子類別</li>
+<li>存取修飾子的等級不可以小於原方法</li>
+<li>一方法在父類別被宣告為 final 或是 static 不可以被 override</li>
+</ul>
+<h1 id="JDK、JRE、JVM"><a href="#JDK、JRE、JVM" class="headerlink" title="JDK、JRE、JVM"></a>JDK、JRE、JVM</h1><p>簡單來說，JDK 包含 JRE，JRE 包含 JVM。</p>
+<p>JVM 為 Java 虛擬機器，簡單來說是運行 Java 程式的地方，因為不同系統只要安裝 JVM 即可運行而讓 Java 實現跨平台。<br>JRE 為 Java 運行環境，包含 JVM、以及 Java 類別函式庫等。但不包含開發工具。<br>JDK 為齊全的 Java 開發工具包，包含 JRE 以及編譯器和指令(javac javadoc 等)</p>
+<blockquote>
+<p>沒看到但寫一下</p>
+</blockquote>
+<h1 id="abstract-與-interface"><a href="#abstract-與-interface" class="headerlink" title="abstract 與 interface"></a>abstract 與 interface</h1><ul>
+<li><p>介面為定義規格用。<br>透過 implements 來實作介面。<br>Java8 以前，interface 所有方法皆為抽象方法。Java8 以後可以默認實作(default)。<br>在 interface 中宣告之變數皆為 public static final。<br>方法則是 public abstract。(沒有 static，因為要給人家用)<br>可以利用 interface 達成多重繼承的模式。(因為 Java 不支援多重繼承)</p>
+</li>
+<li><p>抽象方法沒有方法主體，且必須加上 abstract 修飾子。<br>透過繼承來建立延伸子類別。一類別成為抽象類別就不可以產生實體(new sth)。<br>abstract 類別內可以存在非抽象方法。抽象類別不一定要有抽象方法，但具有抽象方法的類別，一定要宣告為抽象類別。<br>抽象類別作為父類別也可以拿來宣告新的物件(但 new 的新物件是非 abstract 的 subclass)。</p>
+</li>
+</ul>
+<blockquote>
+<p>不要濫用繼承</p>
+</blockquote>
+<h1 id="例外處理"><a href="#例外處理" class="headerlink" title="例外處理"></a>例外處理</h1><p>CheckedException 和 RuntimeException</p>
+<p>CheckedException : 一定要處理。</p>
+<h1 id="相較於程序性程式語言，物件導向程式語言的優勢是什麼"><a href="#相較於程序性程式語言，物件導向程式語言的優勢是什麼" class="headerlink" title="相較於程序性程式語言，物件導向程式語言的優勢是什麼?"></a>相較於程序性程式語言，物件導向程式語言的優勢是什麼?</h1><blockquote>
+<p>簡答即為物件導向三大特性，有時會多聽到一種即為抽象</p>
+</blockquote>
+<ul>
+<li><p>封裝性（Encapsulation）：<br>物件導向程式語言能夠將數據和相關的操作（方法）封裝在一個物件中，將其作為一個獨立的單元進行操作，將數據和操作與其他部分隔離開來，從而提高了代碼的可重用性和可維護性。</p>
+</li>
+<li><p>繼承性（Inheritance）：<br>繼承是物件導向程式設計的核心概念之一，可以使子類別繼承父類別的屬性和方法，並且可以在此基礎上進行擴展和重寫。這種機制可以提高代碼的可重用性和可擴展性，減少代碼的冗餘性。</p>
+</li>
+<li><p>多態性（Polymorphism）：<br>多態性是指對同一個消息的不同對象可以有不同的反應。物件導向程式語言通過多態性實現了代碼的靈活性和可擴展性，可以讓程序更加具有彈性和可讀性。</p>
+</li>
+<li><p>抽象性（Abstraction）：<br>抽象是物件導向程式設計的重要概念之一，它將對象的本質特徵抽象出來，形成一個抽象的類型。這種機制可以使代碼更加通用和具有可移植性，讓程序更加靈活和可擴展。</p>
+</li>
+</ul>
+<p>總的來說，物件導向程式語言具有更好的可維護性、可重用性、可擴展性和靈活性，能夠讓程序員更加高效地開發複雜的應用程序。</p>
+<h2>程序性程式語言的優勢</h2>
+
+<ul>
+<li>效率高 :<br>程序性程式語言通常更接近計算機硬件，能夠直接操作內存和 CPU 等硬件資源，因此其執行速度相對較快，適合用於需要高效處理大量數據和需要對系統資源進行直接控制的場景。</li>
+<li>較好入門 :<br>因為不需要學習物件導向的概念，程式為依序執行。對初學者較友善</li>
+</ul>
+<blockquote>
+<p>但學 C 語言的指標會讓你想哭</p>
+</blockquote>
+<h1 id="什麼是-ORM"><a href="#什麼是-ORM" class="headerlink" title="什麼是 ORM?"></a>什麼是 ORM?</h1><blockquote>
+<p>Object Relational Mapping 物件關聯對應</p>
+</blockquote>
+<p>DB 和 Java 程式(或任一 OOP 程式語言)是 2 種不同的東西。<br>為了要實現在 2 者之間的轉換而有了這樣的技術。(可以想成在是可在程式中使用的虛擬資料庫)<br>在 Java 程式中，即是所謂 POJO(這裡指廣義 JAVA BEAN 或稱 VO)中的屬性對應欄位。<br>常見的 ORM 框架有 Hibernate、MyBatis、Spring Data JPA。<br>MyBatis 優勢為寫原生 SQL 比較方便。</p>
+<h1 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h1><h1 id="inner、left、right-join-的差別"><a href="#inner、left、right-join-的差別" class="headerlink" title="inner、left、right join 的差別"></a>inner、left、right join 的差別</h1><blockquote>
+<p>只要有 SQL 這題幾乎必考</p>
+</blockquote>
+<ul>
+<li>inner join : 表格都有值的資料會顯示</li>
+<li>Left join : 只顯示左邊表格有的值，右邊表格無此值者會顯⽰ null</li>
+<li>right join : 只顯示右邊表格有的值，左邊表格無此值者會顯⽰ null</li>
+</ul>
+<blockquote>
+<p>還有 2 種知道”可能”會加分吧(?)</p>
+</blockquote>
+<ul>
+<li>full join : 將合併表格的所有欄位都顯示出來</li>
+<li>cross join : 交叉合併查詢(Cross Join )是關聯式代數的卡迪生乘績運算，查詢結果的紀錄是 2 個資料表紀錄的乘積。</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">Select</span> <span class="operator">*</span> <span class="keyword">From</span> 表A <span class="keyword">Cross</span> <span class="keyword">Join</span> 表B;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>表 A 有 5 筆紀錄，表 B 有 8 筆紀錄，交查合併後會得到 5 * 8&#x3D;40 筆的紀錄，如果沒有指名欄位，欄位數就是 2 個資料表的欄位總數。</p>
+</blockquote>
+<h1 id="order-by-要會寫"><a href="#order-by-要會寫" class="headerlink" title="order by 要會寫"></a>order by 要會寫</h1><h1 id="前端和後端是什麼"><a href="#前端和後端是什麼" class="headerlink" title="前端和後端是什麼?"></a>前端和後端是什麼?</h1><blockquote>
+<p>懷疑我被刁難 QQ</p>
+</blockquote>
+<p>前端：指與用戶直接互動的界面，主要由 HTML、CSS 和 JavaScript 等技術構建。前端開發人員負責設計和實現這些界面，使其具有良好的用戶體驗。</p>
+<p>後端：指在服務器端處理客戶端請求和業務邏輯的部分，通常由一些特定的程式語言、框架和庫實現。後端開發人員負責編寫和維護這些程式，保證其能夠有效地處理請求，並返回正確的結果。</p>
+<h1 id="JSP-是前端還是後端-為什麼"><a href="#JSP-是前端還是後端-為什麼" class="headerlink" title="JSP 是前端還是後端? 為什麼"></a>JSP 是前端還是後端? 為什麼</h1><p>JSP（JavaServer Pages）是一個基於 Java 技術的伺服器端腳本語言，用於動態網頁開發。因此，JSP 被歸類為後端技術，用於網頁後端的程式邏輯處理。</p>
+<p>JSP 的基本思想是在一個 HTML 文件中嵌入 Java 代碼，這些代碼通過伺服器端運行並生成 HTML 文件返回給客戶端。JSP 可以通過標籤庫和自定義標籤來實現對動態網頁的設計和渲染，同時也支持多種資料庫操作。</p>
+<p>總之，JSP 處理的是網頁的後端業務邏輯，它將伺服器端的資料轉換為 HTML，再返回給客戶端展示，所以 JSP 屬於後端技術。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://example.com">Lynn</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章連結: </span><span class="post-copyright-info"><a href="https://example.com/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/">https://example.com/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 許可協議。轉載請註明來自 <a href="https://example.com" target="_blank">🍋阿檸賺大錢走上人生巔峰🍋</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Java/">Java</a><a class="post-meta__tags" href="/tags/%E9%9D%A2%E8%A9%A6/">面試</a><a class="post-meta__tags" href="/tags/%E5%9F%BA%E7%A4%8E/">基礎</a></div><div class="post_share"><div class="social-share" data-image="/./images/interv.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/02/20/Spring-boot/"><img class="prev-cover" src="/../images/springboot.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Spring boot</div></div></a></div><div class="next-post pull-right"><a href="/2023/02/14/Spring-MVC/"><img class="next-cover" src="/./images/spring-mvc.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Spring MVC</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相關推薦</span></div><div class="relatedPosts-list"><div><a href="/2022/12/17/JDBC%E7%AD%86%E8%A8%98/" title="JDBC筆記"><img class="cover" src="/../images/jdbc.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-17</div><div class="title">JDBC筆記</div></div></a></div><div><a href="/2022/12/03/Java%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-1/" title="Java學習筆記(一)"><img class="cover" src="/../images/java.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-03</div><div class="title">Java學習筆記(一)</div></div></a></div><div><a href="/2022/12/14/Java%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98-2/" title="Java學習筆記(二)"><img class="cover" src="/../images/java.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-12-14</div><div class="title">Java學習筆記(二)</div></div></a></div><div><a href="/2023/02/10/Spring/" title="Spring"><img class="cover" src="/./images/spring.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-10</div><div class="title">Spring</div></div></a></div><div><a href="/2023/02/20/Spring-boot/" title="Spring boot"><img class="cover" src="/../images/springboot.jpeg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-20</div><div class="title">Spring boot</div></div></a></div><div><a href="/2023/02/14/Spring-MVC/" title="Spring MVC"><img class="cover" src="/./images/spring-mvc.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-14</div><div class="title">Spring MVC</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/lemon2.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Lynn</div><div class="author-info__description">嚕貓,賺大錢,躺大床</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LynnHung1206"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/LynnHung1206" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:lynn990908@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%81%E8%A3%9D%E3%80%81%E7%B9%BC%E6%89%BF%E3%80%81%E5%A4%9A%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">封裝、繼承、多型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%9B%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">泛型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#StringBuffer-%E8%88%87-StringBuilder"><span class="toc-number">3.</span> <span class="toc-text">StringBuffer 與 StringBuilder</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%9A%E9%BA%BC%E6%98%AF%E5%9F%B7%E8%A1%8C%E7%B7%92%E5%AE%89%E5%85%A8"><span class="toc-number">4.</span> <span class="toc-text">甚麼是執行緒安全</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#final-%E8%88%87-finally-%E8%88%87-finalize"><span class="toc-number">5.</span> <span class="toc-text">final 與 finally 與 finalize</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#static"><span class="toc-number">6.</span> <span class="toc-text">static</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#x3D-x3D-%E8%88%87-equals"><span class="toc-number">7.</span> <span class="toc-text">&#x3D;&#x3D; 與 .equals</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Collection"><span class="toc-number">8.</span> <span class="toc-text">Collection</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">8.1.</span> <span class="toc-text">LinkedList與ArrayList差別</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Overload-%E5%92%8C-Override"><span class="toc-number">9.</span> <span class="toc-text">Overload 和 Override</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">9.1.</span> <span class="toc-text">Overloading</span></a></li><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">9.2.</span> <span class="toc-text">Override</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JDK%E3%80%81JRE%E3%80%81JVM"><span class="toc-number">10.</span> <span class="toc-text">JDK、JRE、JVM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#abstract-%E8%88%87-interface"><span class="toc-number">11.</span> <span class="toc-text">abstract 與 interface</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BE%8B%E5%A4%96%E8%99%95%E7%90%86"><span class="toc-number">12.</span> <span class="toc-text">例外處理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9B%B8%E8%BC%83%E6%96%BC%E7%A8%8B%E5%BA%8F%E6%80%A7%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%EF%BC%8C%E7%89%A9%E4%BB%B6%E5%B0%8E%E5%90%91%E7%A8%8B%E5%BC%8F%E8%AA%9E%E8%A8%80%E7%9A%84%E5%84%AA%E5%8B%A2%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="toc-number">13.</span> <span class="toc-text">相較於程序性程式語言，物件導向程式語言的優勢是什麼?</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link"><span class="toc-number">13.1.</span> <span class="toc-text">程序性程式語言的優勢</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E9%BA%BC%E6%98%AF-ORM"><span class="toc-number">14.</span> <span class="toc-text">什麼是 ORM?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SQL"><span class="toc-number">15.</span> <span class="toc-text">SQL</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#inner%E3%80%81left%E3%80%81right-join-%E7%9A%84%E5%B7%AE%E5%88%A5"><span class="toc-number">16.</span> <span class="toc-text">inner、left、right join 的差別</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#order-by-%E8%A6%81%E6%9C%83%E5%AF%AB"><span class="toc-number">17.</span> <span class="toc-text">order by 要會寫</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E7%AB%AF%E5%92%8C%E5%BE%8C%E7%AB%AF%E6%98%AF%E4%BB%80%E9%BA%BC"><span class="toc-number">18.</span> <span class="toc-text">前端和後端是什麼?</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JSP-%E6%98%AF%E5%89%8D%E7%AB%AF%E9%82%84%E6%98%AF%E5%BE%8C%E7%AB%AF-%E7%82%BA%E4%BB%80%E9%BA%BC"><span class="toc-number">19.</span> <span class="toc-text">JSP 是前端還是後端? 為什麼</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/02/25/goToWorkLa/" title="終於到這一天"><img src="/./images/C.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="終於到這一天"/></a><div class="content"><a class="title" href="/2023/02/25/goToWorkLa/" title="終於到這一天">終於到這一天</a><time datetime="2023-02-25T02:13:52.000Z" title="發表於 2023-02-25 10:13:52">2023-02-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/21/mybatisInSpring/" title="MyBatis 加入 Spring Boot"><img src="/../images/springmybatis.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MyBatis 加入 Spring Boot"/></a><div class="content"><a class="title" href="/2023/02/21/mybatisInSpring/" title="MyBatis 加入 Spring Boot">MyBatis 加入 Spring Boot</a><time datetime="2023-02-21T11:45:01.000Z" title="發表於 2023-02-21 19:45:01">2023-02-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/20/Spring-boot/" title="Spring boot"><img src="/../images/springboot.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring boot"/></a><div class="content"><a class="title" href="/2023/02/20/Spring-boot/" title="Spring boot">Spring boot</a><time datetime="2023-02-20T12:56:37.000Z" title="發表於 2023-02-20 20:56:37">2023-02-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/" title="基礎面試題"><img src="/./images/interv.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="基礎面試題"/></a><div class="content"><a class="title" href="/2023/02/15/%E5%9F%BA%E7%A4%8E%E9%9D%A2%E8%A9%A6%E9%A1%8C/" title="基礎面試題">基礎面試題</a><time datetime="2023-02-15T10:37:17.000Z" title="發表於 2023-02-15 18:37:17">2023-02-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/14/Spring-MVC/" title="Spring MVC"><img src="/./images/spring-mvc.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Spring MVC"/></a><div class="content"><a class="title" href="/2023/02/14/Spring-MVC/" title="Spring MVC">Spring MVC</a><time datetime="2023-02-14T09:10:17.000Z" title="發表於 2023-02-14 17:10:17">2023-02-14</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By Lynn</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="淺色和深色模式轉換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到頂部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
